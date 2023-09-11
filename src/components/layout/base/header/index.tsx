@@ -1,9 +1,9 @@
-const Header = () => {
+const HeaderMain = () => {
     return (
-        <div>
-
+        <div className="apsc-admin-main-header">
+            This is header
         </div>
     )
 }
 
-export default Header
+export default HeaderMain
