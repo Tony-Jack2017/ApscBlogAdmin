@@ -6,8 +6,8 @@ type SidebarMenu = {
 
 const sidebarMenu:[SidebarMenu] = [
     {
-        title: "测试"
-    }
+        title: "Dashboard",
+    },
 ]
 
 export default sidebarMenu

@@ -13,14 +13,17 @@ $auth: "auth";
   height: 100vh;
   display: flex;
   overflow-y: auto;
-  &-left {
-    width: 14%;
-    min-width: 300px;
+  .main-layout-left {
+    transition: all 0.5s ease-in-out;
+    &.layout_show_sidebar {
+    }
+    &.layout_hidden_sidebar {
+    }
   }
-  &-right {
+  .main-layout-right {
     flex: 1
   }
-  &-content {
+  .main-layout-content {
     box-sizing: border-box;
     height: calc(100vh - 80px);
     padding: 24px;
@@ -30,22 +33,27 @@ $auth: "auth";
 
 
 // Base Layout Components
-.#{$project}-#{$main}-sidebar {
+.#{$main}-layout-sidebar {
   height: 100%;
   color: white;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   background: #131313;
-  .#{$project}-#{$main}-logo {
+  transition: all 0.5s ease-in-out;
+  .sidebar-header {
+    padding: 24px;
     display: flex;
-    padding: 20px 24px 19px 24px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    align-items: center;
+    justify-content: space-between;
     box-shadow:
-            0px 1px 2px rgba(255, 255, 255, 0.05),
-            0px 2px 4px rgba(255, 255, 255, 0.03)
-  ;
-    img {
-      height: 40px;
+            0 1px 2px rgba(255, 255, 255, 0.05),
+            0 2px 4px rgba(255, 255, 255, 0.03);
+    .#{$project}-logo {
+      height: 32px;
+      img {
+        height: 100%;
+      }
     }
   }
   .sidebar-content {
@@ -73,13 +81,27 @@ $auth: "auth";
       height: 24px;
     }
   }
-}
 
+  &.sidebar_unFolded {
+    width: 300px;
+  }
+  &.sidebar_folded {
+    width: 84px;
+    .sidebar-header {
+      .folded-icon {
+        display: none;
+      }
+    }
+    .sidebar-footer {
+      display: none;
+    }
+  }
+}
 .#{$project}-#{$main}-header {
   height: 48px;
   padding: 16px 16px;
   box-shadow:
-          0px 2px 10px rgba(0, 0, 0, 0.03),
-          0px 4px 12px rgba(0, 0, 0, 0.01)
+          0 2px 10px rgba(0, 0, 0, 0.03),
+          0 4px 12px rgba(0, 0, 0, 0.01)
   ;
 }
