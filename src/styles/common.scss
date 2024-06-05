@@ -7,29 +7,7 @@ $main: "main";
 $auth: "auth";
 
 
-// Layout
-.#{$project}-main-layout {
-  min-width: 1366px;
-  height: 100vh;
-  display: flex;
-  overflow-y: auto;
-  .main-layout-left {
-    transition: all 0.5s ease-in-out;
-    &.layout_show_sidebar {
-    }
-    &.layout_hidden_sidebar {
-    }
-  }
-  .main-layout-right {
-    flex: 1
-  }
-  .main-layout-content {
-    box-sizing: border-box;
-    height: calc(100vh - 80px);
-    padding: 24px;
-    overflow-y: auto;
-  }
-}
+
 
 
 // Base Layout Components

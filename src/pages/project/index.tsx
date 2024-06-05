@@ -1,6 +1,6 @@
 const ProjectOverview = () => {
     return (
-        <div>
+        <div className="project-page">
             This project overview page
         </div>
     )

@@ -1,7 +1,8 @@
 import React from 'react';
-import './App.css';
 import './styles/main.scss'
 import './styles/common.scss'
+import './styles/layuot.scss'
+import './styles/commponent.scss'
 import {RouterProvider} from "react-router-dom";
 import router from "./router";
 
