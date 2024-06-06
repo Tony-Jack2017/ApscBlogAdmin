@@ -15,34 +15,16 @@ interface MainLayoutItf {
 
 const MainLayout:FC<MainLayoutItf> = (props) => {
 
-    const [collapsed, setCollapsed] = useState(false)
-
     const classes = classNames(
         "main-layout"
     )
 
-
-    const handleTrigger = () => {
-        setCollapsed(prevState => {
-            return !prevState
-        })
-    }
-
     return (
         <div className={classes}>
             <Layout style={{ height: "100%" }}>
-                <Sider className="main-layout-sider" width="12%" collapsed={collapsed}>
+                <Sider className="main-layout-sider" width="12%">
                     <div className="logo">
-                        {
-                            collapsed
-                                ? <img src={LogoWhite} alt="logo" onClick={handleTrigger} />
-                                : <img src={LogoFullWhite} alt="logo"/>
-                        }
-                        {
-                            !collapsed && <div className="trigger" onClick={handleTrigger}>
-                                <MenuOutlined />
-                            </div>
-                        }
+                        <img src={LogoFullWhite} alt="logo" />
                     </div>
                     <div className="menu">
                         <SiderMenu list={siderMenu} />

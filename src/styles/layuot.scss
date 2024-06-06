@@ -5,6 +5,7 @@
   &-sider {
     max-width: 300px;
     min-width: 200px;
+    background-color: #15181e !important;
     .logo {
       display: flex;
       align-items: center;
@@ -18,24 +19,34 @@
         width: auto;
       }
       .trigger {
+        color: white;
         font-size: 28px;
       }
     }
     .menu {
-      color: white;
       padding: 16px;
       margin-top: 16px;
-      font-weight: 600;
+      .ant-menu {
+        background-color: transparent;
+      }
+      .ant-menu-sub {
+        background-color: transparent !important;
+      }
+      .ant-menu-item-group-title {
+        color: white;
+        text-transform: uppercase;
+        margin: 12px 0;
+      }
       .ant-menu-item-icon {
         font-size: 20px;
       }
       .ant-menu-item-icon + span {
-        font-size: 18px;
+        font-size: 16px;
         margin-inline-start: 20px;
         font-weight: 400;
       }
       .ant-menu-title-content {
-        font-size: 18px;
+        font-size: 16px;
         margin-left: 24px;
         font-weight: 400;
       }
