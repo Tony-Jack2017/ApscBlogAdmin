@@ -1,16 +1,21 @@
 import React, {Fragment} from "react";
-import {isArray} from "util";
+import {MenuItem} from "../menus";
 
-type SubComponentType = React.FC<{children: React.ReactNode}>
+type SubComponentType = React.FC<{ children: React.ReactNode }>
 
-export type itemType<T> = {
+interface GenTest<T> {
+    (
+      list: T[],
+      Component: React.FC,
+      SubComponent: SubComponentType
+    ): React.ReactNode
 }
 
-function GenChild<T extends itemType>(list: T[], Component: React.FC, SubComponent: SubComponentType){
+const GenChild: GenTest<MenuItem> = (list, Component, SubComponent) => {
     return (
         <Fragment>
                 {
-                    isArray(list)
+                    Array.isArray(list)
                         ? list.map((item, index) => {
                             return (
                                 <Fragment>
@@ -19,7 +24,7 @@ function GenChild<T extends itemType>(list: T[], Component: React.FC, SubCompone
                                             {
                                                 GenChild(item.children, Component, SubComponent)
                                             }
-                                        </SubComponent> : <Component/>
+                                        </SubComponent> : <Component />
                                     }
                                 </Fragment>
                             )

@@ -1,16 +1,15 @@
 import type { MenuProps } from "antd"
 import React from "react";
 import {FileTextOutlined, FileOutlined, PieChartOutlined, TeamOutlined, UserOutlined} from "@ant-design/icons";
-import {itemType} from "../components/GenChild";
 
 export type Item = Required<MenuProps>['items'][number];
 
 export type SiderItem = {
     title: string
-    content: Item[]
+    content: MenuItem[]
 }
 
-export interface MenuItem extends itemType {
+export interface MenuItem {
     label: React.ReactNode,
     key: React.Key,
     icon?: React.ReactNode,
