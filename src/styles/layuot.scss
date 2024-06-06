@@ -6,15 +6,52 @@
     max-width: 300px;
     min-width: 200px;
     .logo {
-      height: 64px;
-      background-color: #282c34;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+      height: 80px;
+      box-sizing: border-box;
+      border-bottom: 1px solid rgba(255, 255, 255, .2);
+      box-shadow: 0 5px 5px rgba(0, 0, 0, .1);
+      img {
+        width: auto;
+      }
+      .trigger {
+        font-size: 28px;
+        color: white;
+        margin-bottom: 12px;
+      }
     }
     .menu {
+      color: white;
       padding: 16px;
+      margin-top: 16px;
+      font-weight: 600;
+      .ant-menu-item-icon {
+        font-size: 20px;
+      }
+      .ant-menu-item-icon + span {
+        font-size: 18px;
+        margin-inline-start: 20px;
+        font-weight: 400;
+      }
+      .ant-menu-title-content {
+        font-size: 18px;
+        margin-left: 24px;
+        font-weight: 400;
+      }
+      .sider-item {
+        .menu-title {
+          margin: 24px 0;
+          padding: 0 24px;
+        }
+      }
     }
   }
 
   &-header {
+    height: 80px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, .05);
     font-weight: 500;
     background-color: #ffffff

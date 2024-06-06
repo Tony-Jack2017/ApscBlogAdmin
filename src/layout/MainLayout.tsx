@@ -1,8 +1,12 @@
-import React, {FC} from "react";
-import {Layout, Menu} from "antd";
+import React, {FC, useState} from "react";
+import {Layout} from "antd";
 import classNames from "classnames";
-import {Outlet, useNavigate} from "react-router-dom";
-import {sidebarMenu} from "../common/menus";
+import {Outlet} from "react-router-dom";
+import LogoFullWhite from "../resources/common/logo/logo-full-white.png"
+import LogoWhite from "../resources/common/logo/logo-white.png"
+import { MenuOutlined } from "@ant-design/icons"
+import SiderMenu from "../components/SiderMenu";
+import {siderMenu} from "../common/menus";
 const { Header, Content, Sider ,Footer} = Layout
 
 interface MainLayoutItf {
@@ -11,30 +15,37 @@ interface MainLayoutItf {
 
 const MainLayout:FC<MainLayoutItf> = (props) => {
 
-    const navigate = useNavigate()
+    const [collapsed, setCollapsed] = useState(false)
 
     const classes = classNames(
         "main-layout"
     )
 
-    const handleSelect = (data:any) => {
-        navigate(data.key)
+
+    const handleTrigger = () => {
+        setCollapsed(prevState => {
+            return !prevState
+        })
     }
 
     return (
         <div className={classes}>
             <Layout style={{ height: "100%" }}>
-                <Sider className="main-layout-sider" width="12%">
-                    <div className="logo" />
+                <Sider className="main-layout-sider" width="12%" collapsed={collapsed}>
+                    <div className="logo">
+                        {
+                            collapsed
+                                ? <img src={LogoWhite} alt="logo" onClick={handleTrigger} />
+                                : <img src={LogoFullWhite} alt="logo"/>
+                        }
+                        {
+                            !collapsed && <div className="trigger" onClick={handleTrigger}>
+                                <MenuOutlined />
+                            </div>
+                        }
+                    </div>
                     <div className="menu">
-                        <Menu
-                            theme="dark"
-                            defaultSelectedKeys={['2']}
-                            items={sidebarMenu}
-                            mode="inline"
-                            onSelect={handleSelect}
-                            style={{ flex: 1, minWidth: 0 }}
-                        />
+                        <SiderMenu list={siderMenu} />
                     </div>
                     <div className="info">
                     </div>
