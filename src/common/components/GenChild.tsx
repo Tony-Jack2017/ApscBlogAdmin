@@ -18,7 +18,7 @@ const GenChild: GenTest<MenuItem> = (list, Component, SubComponent) => {
                     Array.isArray(list)
                         ? list.map((item, index) => {
                             return (
-                                <Fragment>
+                                <Fragment key={item.key}>
                                     {
                                         item.children ? <SubComponent>
                                             {
