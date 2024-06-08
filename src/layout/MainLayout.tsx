@@ -1,12 +1,11 @@
-import React, {FC, useState} from "react";
+import React, {FC} from "react";
 import {Layout} from "antd";
 import classNames from "classnames";
 import {Outlet} from "react-router-dom";
 import LogoFullWhite from "../resources/common/logo/logo-full-white.png"
-import LogoWhite from "../resources/common/logo/logo-white.png"
-import { MenuOutlined } from "@ant-design/icons"
 import SiderMenu from "../components/SiderMenu";
 import {siderMenu} from "../common/menus";
+import MainHeader from "./components/main/Header";
 const { Header, Content, Sider ,Footer} = Layout
 
 interface MainLayoutItf {
@@ -34,7 +33,7 @@ const MainLayout:FC<MainLayoutItf> = (props) => {
                 </Sider>
                 <Layout style={{ backgroundColor: "#f6f6f6" }}>
                     <Header className="main-layout-header">
-                        This is header
+                        <MainHeader />
                     </Header>
                     <Content className="main-layout-content">
                         <div className="content-header">

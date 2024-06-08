@@ -1,16 +1,18 @@
-import type { MenuProps } from "antd"
 import React from "react";
-import {FileTextOutlined, FileOutlined, PieChartOutlined, TeamOutlined, UserOutlined} from "@ant-design/icons";
+import type { MenuProps } from "antd"
+import {
+    FileTextOutlined,
+    SettingOutlined,
+    PieChartOutlined,
+    ProductOutlined,
+    UserOutlined,
+    FormOutlined,
+    LogoutOutlined
+} from "@ant-design/icons";
 
 export type MenuItem = Required<MenuProps>['items'][number];
 
-function getItem(
-    label: React.ReactNode,
-    key: React.Key,
-    icon?: React.ReactNode,
-    children?: MenuItem[],
-    type?: "group"
-    ): MenuItem {
+function getItem( label: React.ReactNode, key: React.Key, icon?: React.ReactNode, children?: MenuItem[], type?: "group" ): MenuItem {
     return { key, icon, children, label, type } as MenuItem
 }
 
@@ -26,7 +28,7 @@ const siderMenu: MenuItem[] = [
             getItem('Create Article', "/article/create"),
             getItem('Draft Box', "/article/draft_box")
         ]),
-        getItem('Project', 'sub2', <TeamOutlined />,  [
+        getItem('Project', 'sub2', <ProductOutlined />,  [
             getItem('Project List', '/project/list'),
             getItem('Create Project', '/project/create')
         ]),
@@ -36,10 +38,17 @@ const siderMenu: MenuItem[] = [
     ],"group"),
     getItem("Setting", "other", null, [
         getItem('Vendor', '/other', <UserOutlined />),
-        getItem('Setting', '/setting', <FileOutlined />),
+        getItem('Setting', '/setting', <SettingOutlined />),
     ],"group"),
 ]
 
+const userMenu: MenuItem[] = [
+    getItem("Profile", "/profile", <UserOutlined />),
+    getItem("Edit Profile", "/edit_profile", <FormOutlined />),
+    getItem("Log Out", "/log_out", <LogoutOutlined />)
+]
+
 export {
-    siderMenu
+    siderMenu,
+    userMenu
 }
