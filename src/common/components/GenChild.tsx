@@ -21,7 +21,7 @@ const GenChild: GenTest<itemType> = (list, Component, SubComponent) => {
                     Array.isArray(list)
                         ? list.map((item, index) => {
                             return (
-                                <Fragment key={item.key}>
+                                <Fragment>
                                     {
                                         item.children ? <SubComponent>
                                             {
