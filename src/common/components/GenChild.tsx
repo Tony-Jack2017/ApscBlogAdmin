@@ -1,5 +1,8 @@
 import React, {Fragment} from "react";
-import {MenuItem} from "../menus";
+
+type itemType = {
+    children?: itemType[]
+}
 
 type SubComponentType = React.FC<{ children: React.ReactNode }>
 
@@ -11,7 +14,7 @@ interface GenTest<T> {
     ): React.ReactNode
 }
 
-const GenChild: GenTest<MenuItem> = (list, Component, SubComponent) => {
+const GenChild: GenTest<itemType> = (list, Component, SubComponent) => {
     return (
         <Fragment>
                 {
