@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React, {CSSProperties, FC, useEffect, useRef, useState} from "react";
 import {Layout} from "antd";
 import classNames from "classnames";
 import {Outlet} from "react-router-dom";
@@ -14,17 +14,19 @@ interface MainLayoutItf {
 
 const MainLayout:FC<MainLayoutItf> = (props) => {
 
+    const sider = useRef<HTMLDivElement>(null)
     const classes = classNames(
         "main-layout"
     )
 
+
     return (
         <div className={classes}>
             <Layout style={{ height: "100%" }}>
-                <Sider className="main-layout-sider" style={{
-                    minWidth: "250", width: "12%", overflow: 'auto',
-                    height: '100vh', position: 'fixed', left: 0, top: 0, bottom: 0
-                }}>
+                <Sider className="main-layout-sider" ref={sider} style={{
+                    overflow: 'auto',height: '100vh', position: 'fixed',
+                    left: 0, top: 0, bottom: 0
+                }} width="250">
                     <div className="logo">
                         <img src={LogoFullWhite} alt="logo" />
                     </div>
@@ -34,9 +36,9 @@ const MainLayout:FC<MainLayoutItf> = (props) => {
                     <div className="info">
                     </div>
                 </Sider>
-                <Layout style={{ marginLeft: "200px"}}>
+                <Layout style={{ marginLeft: 250}}>
                     <Header style={{
-                        boxSizing: 'border-box', width: "calc(100% - 200px)",
+                        boxSizing: 'border-box', width: `calc(100% - 250px)`,
                         position: 'fixed', top: 0, zIndex: 1,
                     }} className="main-layout-header">
                         <MainHeader />
@@ -54,7 +56,7 @@ const MainLayout:FC<MainLayoutItf> = (props) => {
                         </div>
                     </Content>
                     <Footer style={{
-                        boxSizing: 'border-box', width: "calc(100% - 200px)",
+                        boxSizing: 'border-box', width: `calc(100% - 250px)`,
                         position: 'fixed', bottom: 0, zIndex: 1,
                     }}
                       className="main-layout-footer">

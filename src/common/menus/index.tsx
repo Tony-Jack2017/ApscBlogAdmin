@@ -7,7 +7,8 @@ import {
     ProductOutlined,
     UserOutlined,
     FormOutlined,
-    LogoutOutlined
+    LogoutOutlined,
+    DeploymentUnitOutlined
 } from "@ant-design/icons";
 
 export type MenuItem = Required<MenuProps>['items'][number];
@@ -37,7 +38,7 @@ const siderMenu: MenuItem[] = [
         getItem('Profile', '/profile', <UserOutlined />),
     ],"group"),
     getItem("Setting", "other", null, [
-        getItem('Vendor', '/other', <UserOutlined />),
+        getItem('Vendor', '/other', <DeploymentUnitOutlined />),
         getItem('Setting', '/setting', <SettingOutlined />),
     ],"group"),
 ]
