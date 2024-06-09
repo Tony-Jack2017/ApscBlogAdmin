@@ -1,6 +1,6 @@
 import { Input } from "antd"
 import { SearchOutlined } from "@ant-design/icons"
-import Navbar from "../../../components/Navbar";
+import Navbar from "../../../components/layout/HeaderNavbar";
 
 const MainHeader = () => {
     return (

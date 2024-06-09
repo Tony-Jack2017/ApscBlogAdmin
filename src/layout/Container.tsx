@@ -1,6 +1,8 @@
 import {CSSProperties, FC, ReactNode} from "react";
+import classNames from "classnames";
 
 interface ContainerItf {
+    isNoStyle?: boolean
     style?: CSSProperties
     className?: string
     children?: ReactNode
@@ -8,13 +10,20 @@ interface ContainerItf {
 
 const Container:FC<ContainerItf> = (props) => {
     const {
+        isNoStyle = false,
         style,
         className,
         children
     } = props
 
+    const classes = classNames(
+        "container",
+        className,
+        { "container-default": !isNoStyle },
+    )
+
     return (
-        <div className={`container ${className}`} style={style}>
+        <div className={classes} style={style}>
             { children }
         </div>
     )

@@ -88,3 +88,30 @@
     height: auto;
   }
 }
+
+.common-menu {
+  ul {
+    min-width: 240px;
+    li {
+      &:not(:first-child) {
+        margin-top: 20px;
+      }
+    }
+    .menu-item {
+      display: flex;
+      align-items: center;
+      position: relative;
+      font-size: 16px;
+      padding: 8px 24px 8px 8px;
+      font-weight: 500;
+      .content {
+        flex: 1;
+      }
+      &:hover {
+        border-top-right-radius: 100px;
+        border-bottom-right-radius: 100px;
+        background-color: #cdcdd9;
+      }
+    }
+  }
+}

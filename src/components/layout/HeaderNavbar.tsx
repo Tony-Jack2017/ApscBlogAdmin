@@ -1,15 +1,15 @@
 import {FC} from "react";
 import classNames from "classnames";
 import {Avatar, Divider, Menu} from "antd";
-import Dropdown from "./Dropdown";
-import {userMenu} from "../common/menus";
+import Dropdown from "../Dropdown";
+import {userMenu} from "../../common/menus";
 import {useNavigate} from "react-router-dom";
 import { MessageOutlined, AppstoreOutlined } from "@ant-design/icons"
-import AvatarImg from "../resources/common/other/avatar.png"
-import Icon from "./Icon";
+import AvatarImg from "../../resources/common/other/avatar.png"
+import Icon from "../Icon";
 
 
-interface NavbarItf {
+interface HeaderNavbarItf {
 }
 
 interface UserMenuItf {
@@ -43,7 +43,7 @@ const UserMenu:FC<UserMenuItf> = (props) => {
     )
 }
 
-const Navbar:FC<NavbarItf> = (props) => {
+const HeaderNavbar:FC<HeaderNavbarItf> = (props) => {
 
     const classes = classNames(
         "nav-bar"
@@ -72,4 +72,4 @@ const Navbar:FC<NavbarItf> = (props) => {
     )
 }
 
-export default Navbar
+export default HeaderNavbar
