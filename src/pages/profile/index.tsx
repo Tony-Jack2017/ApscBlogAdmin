@@ -1,6 +1,23 @@
-import Container from "../../layout/Container";
+import React from "react";
+import {
+    FileTextOutlined, ProductOutlined, PictureOutlined,
+    BranchesOutlined, IdcardOutlined
+} from "@ant-design/icons";
+
 import "../../styles/page/profile.scss"
 import HeaderBg from "../../resources/page/profile/header-bg.jpg"
+
+import Container from "../../layout/Container";
+import CoverBackground from "../../components/CoverBackground";
+
+
+const userInfo = [
+    { title: "TimeLine", icon: <BranchesOutlined /> },
+    { title: "Article", num: 134, icon: <FileTextOutlined /> },
+    { title: "Project", num: 134, icon: <ProductOutlined /> },
+    { title: "Photos", num: 134, icon: <PictureOutlined /> },
+    { title: "About", icon: <IdcardOutlined /> },
+]
 
 const ProfileOverview = () => {
     return (
@@ -10,12 +27,11 @@ const ProfileOverview = () => {
                     <div className="header-content-left">
 
                     </div>
-                    <div className="header-content-right">
-                        <div className="profile-header-bg">
-                            <div className="background"></div>
-                            <img src={HeaderBg} alt="bg" />
+                    <CoverBackground className="header-content-right" cover={HeaderBg}>
+                        <div className="footer">
+
                         </div>
-                    </div>
+                    </CoverBackground>
                 </Container>
             </section>
         </div>

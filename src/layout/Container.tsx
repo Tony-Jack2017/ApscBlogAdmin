@@ -7,7 +7,6 @@ interface ContainerItf {
 }
 
 const Container:FC<ContainerItf> = (props) => {
-
     const {
         style,
         className,
