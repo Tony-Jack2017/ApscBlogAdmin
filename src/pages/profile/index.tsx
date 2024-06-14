@@ -46,11 +46,11 @@ const ProfileOverview = () => {
                                     ApscBuilder
                                 </div>
                                 <p className="email">
-                                    <MailOutlined style={{marginRight: 20}} />
+                                    <MailOutlined style={{marginRight: 16}} />
                                     gan19991118@gmail.com
                                 </p>
                                 <p className="phone">
-                                    <PhoneOutlined style={{marginRight: 20}} />
+                                    <PhoneOutlined style={{marginRight: 16}} />
                                     18328375938
                                 </p>
                             </div>
@@ -94,9 +94,6 @@ const ProfileOverview = () => {
             <section className="section section-2">
                 <Container isNoStyle={true} className="content">
                     <div className="nav">
-                        <p className="title">
-                            Category
-                        </p>
                         <ComMenu list={navMenu} />
                     </div>
                     <Container className="main-content">

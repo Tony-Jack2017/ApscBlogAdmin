@@ -1,30 +1,30 @@
 import {createBrowserRouter} from "react-router-dom";
 
 
-import DashboardPage from "../pages/dashboard";
-import SignIn from "../pages/auth/signin";
 import MainLayout from "../layout/MainLayout";
 import AuthLayout from "../layout/AuthLayout";
+import ErrorPage from "../pages/common/error";
 
-
+import DashboardPage from "../pages/dashboard";
 import ArticleList from "../pages/article/list";
-import ArticleTag from "../pages/article/tag";
-import ArticleType from "../pages/article/type";
+import ArticleComment from "../pages/article/comment";
+import ArticleDerivative from "../pages/article/derivative";
 import CreateArticle from "../pages/article/create";
 import DraftBox from "../pages/article/draft_box";
-
 import Profile from "../pages/profile";
-
 import ProjectList from "../pages/project/list";
 import ProjectCreate from "../pages/project/create";
 import Setting from "../pages/other/setting";
 import Other from "../pages/other/other";
 
 
+import Access from "../pages/auth/access";
+import Forget from "../pages/auth/forget";
+
 
 const router = createBrowserRouter([
     {
-        path: '/', element: <MainLayout />,
+        path: '/', element: <MainLayout />, errorElement: <ErrorPage />,
         children: [
             { path: 'dashboard', element: <DashboardPage /> },
             { path: 'profile', element: <Profile /> },
@@ -32,8 +32,8 @@ const router = createBrowserRouter([
                 path: "article",
                 children: [
                     { path: "list", element: <ArticleList /> },
-                    { path: "tag", element: <ArticleTag /> },
-                    { path: "type", element: <ArticleType /> },
+                    { path: "comment", element: <ArticleComment /> },
+                    { path: "derivative", element: <ArticleDerivative /> },
                     { path: "create", element: <CreateArticle /> },
                     { path: "draft_box", element: <DraftBox /> }
                 ]
@@ -52,10 +52,8 @@ const router = createBrowserRouter([
     {
         path: '/auth', element: <AuthLayout />,
         children: [
-            {
-                path: 'signIn',
-                element: <SignIn />
-            }
+            { path: 'access', element: <Access /> },
+            { path: 'forget', element: <Forget /> },
         ]
     }
 ])

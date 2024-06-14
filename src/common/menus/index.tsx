@@ -24,8 +24,8 @@ const siderMenu: MenuItem[] = [
     getItem("Content", "content", null, [
         getItem('Article', 'sub1', <FileTextOutlined />, [
             getItem('List Manage', '/article/list', ),
-            getItem('Tag Manage', '/article/tag'),
-            getItem('Type Manage', '/article/type'),
+            getItem('Comment Manage', '/article/comment'),
+            getItem('Derivative Manage', '/article/derivative'),
             getItem('Create Article', "/article/create"),
             getItem('Draft Box', "/article/draft_box")
         ]),

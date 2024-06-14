@@ -1,4 +1,4 @@
-const ArticleTag = () => {
+const ArticleComment = () => {
     return (
         <div>
 
@@ -6,4 +6,4 @@ const ArticleTag = () => {
     )
 }
 
-export default ArticleTag
+export default ArticleComment

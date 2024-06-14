@@ -1,4 +1,4 @@
-import React, {CSSProperties, FC, useEffect, useRef, useState} from "react";
+import React, {FC, useRef} from "react";
 import {Layout} from "antd";
 import classNames from "classnames";
 import {Outlet} from "react-router-dom";
@@ -48,10 +48,10 @@ const MainLayout:FC<MainLayoutItf> = (props) => {
                         marginTop: "72px", paddingBottom: "80px"
                     }}
                       className="main-layout-content">
-                        <div className="content-header">
-                            This is header content
-                        </div>
-                        <div className="content">
+                        {/*<div className="content-header">*/}
+                        {/*    This is header content*/}
+                        {/*</div>*/}
+                        <div className="layout-content">
                             <Outlet />
                         </div>
                     </Content>
@@ -60,7 +60,7 @@ const MainLayout:FC<MainLayoutItf> = (props) => {
                         position: 'fixed', bottom: 0, zIndex: 1,
                     }}
                       className="main-layout-footer">
-                        Apsc Blog Admin ©2024 Created by APSC_BUILDER
+                        Apsc Blog Admin ©2024 Created by ♥ APSC_BUILDER
                     </Footer>
                 </Layout>
             </Layout>

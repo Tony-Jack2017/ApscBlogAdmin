@@ -1,4 +1,4 @@
-import instance from "./config/http";
+import instance from "../config/http";
 
 export function getArticleList() {
    return instance.get("/article/list")

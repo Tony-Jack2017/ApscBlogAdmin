@@ -1,9 +1,8 @@
-const Password = () => {
+const Forget = () => {
     return (
         <div className="forget-page">
-
         </div>
     )
 }
 
-export default Password
+export default Forget

@@ -1,5 +1,5 @@
 import React, {FC, useState} from "react";
-import {createEditor, Descendant} from "slate";
+import {createEditor} from "slate";
 import { Slate, Editable, withReact } from 'slate-react'
 
 type TextEditorProps = {
@@ -32,7 +32,7 @@ const TextEditor:FC<TextEditorProps> = (props) => {
     return (
         <div className="text-editor">
             <Slate editor={editor} initialValue={initialValue} onChange={onChange}>
-                <Editable />
+                <Editable className="editor" style={{ minHeight: 500, outline: "none", padding: 16 }} />
             </Slate>
         </div>
     )

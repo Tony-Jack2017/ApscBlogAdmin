@@ -1,4 +1,4 @@
-const ArticleType = () => {
+const ArticleDerivative = () => {
     return (
         <div>
 
@@ -6,4 +6,4 @@ const ArticleType = () => {
     )
 }
 
-export default ArticleType
+export default ArticleDerivative
