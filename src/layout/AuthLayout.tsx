@@ -22,7 +22,7 @@ const AuthLayout:FC<AuthLayoutItf> = (props) => {
             <div className="layout-background">
                 { backBg ? backBg : <img src={BackgroundImg} alt="background" />}
             </div>
-            <Container isNoStyle={true} style={{ marginTop: "20vh", zIndex: 2, position: "relative" }}>
+            <Container className="layout-content" isNoStyle={true} style={{ zIndex: 2, position: "relative" }}>
                <Outlet />
             </Container>
         </div>

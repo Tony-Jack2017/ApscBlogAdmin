@@ -48,9 +48,9 @@ const Access = () => {
             <div className={formClass1}>
                 <div className="signIn-form">
                     <ComForm>
-                        <ComFormItem name="Account"></ComFormItem>
-                        <ComFormItem name="Password" type="password"></ComFormItem>
-                        <ComFormItem style={{ marginTop: 40 }} className="CTA">
+                        <ComFormItem label="Account" name="account"></ComFormItem>
+                        <ComFormItem label="Password" name="password" type="password"></ComFormItem>
+                        <ComFormItem name="CTA" style={{ marginTop: 40 }} className="CTA">
                             <div style={{display: "flex", alignItems: "center"}}>
                                 <Button type="primary" shape={"round"}>LOGIN</Button>
                                 <a onClick={() => handleSwitch(1)} href="#" className="switch">I'm New</a>
@@ -62,11 +62,11 @@ const Access = () => {
             <div className={formClass2}>
                 <div className="signUp-form">
                     <ComForm>
-                        <ComFormItem name="FullName"></ComFormItem>
-                        <ComFormItem name="Email" type="email"></ComFormItem>
-                        <ComFormItem name="Password" type="password"></ComFormItem>
-                        <ComFormItem name="Comfir Password" type="password"></ComFormItem>
-                        <ComFormItem style={{ marginTop: 40 }} className="CTA">
+                        <ComFormItem label="FullName" name="fullName"></ComFormItem>
+                        <ComFormItem label="Email" name="email" type="email"></ComFormItem>
+                        <ComFormItem label="Password" name="password" type="password"></ComFormItem>
+                        <ComFormItem label="Comfir Password" name="comfir" type="password"></ComFormItem>
+                        <ComFormItem name="CTA" style={{ marginTop: 40 }} className="CTA">
                             <div style={{display: "flex", alignItems: "center"}}>
                                 <Button type="primary" shape={"round"}>SIGNUP NOW</Button>
                                 <a onClick={() => handleSwitch(2)} href="#" className="switch">I have an account</a>

@@ -138,6 +138,11 @@
   .container {
     max-width: 1150px;
   }
+  .auth-layout {
+    .layout-content {
+      margin-top: 10vh;
+    }
+  }
 }
 @media (min-width: 1728px) and (max-width: 1920px) {
   .container {
