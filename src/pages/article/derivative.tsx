@@ -1,7 +1,11 @@
+import Container from "../../layout/Container";
+
 const ArticleDerivative = () => {
     return (
-        <div>
+        <div className="derivative-list-page">
+            <Container>
 
+            </Container>
         </div>
     )
 }

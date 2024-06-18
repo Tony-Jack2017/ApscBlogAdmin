@@ -1,6 +1,9 @@
 const ArticleItem = () => {
     return (
-        <div> </div>
+        <div className="article-item-page">
+            <main className="article-content">
+            </main>
+        </div>
     )
 }
 

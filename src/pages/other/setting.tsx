@@ -1,7 +1,7 @@
 const Setting = () => {
     return (
-        <div>
-
+        <div className="setting-page">
+            This is setting page
         </div>
     )
 }

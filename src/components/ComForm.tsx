@@ -5,7 +5,7 @@ import {
   CSSProperties,
   FC,
   ReactNode,
-  useContext,
+  useContext, useMemo,
   useState
 } from "react";
 
@@ -32,7 +32,9 @@ interface ComFormItf {
 
 const FormContext = createContext<FormContextType>({
   formState: undefined,
-  updateStateFunc: (name:string, value:any) => {}
+  updateStateFunc: (name:string, value:any) => {
+    console.log(222)
+  }
 })
 const useComForm = (): FormInner => {
   const [formState, setFormState] = useState<object>()
@@ -73,7 +75,7 @@ const ComFormItem: FC<ComFormItemItf> = (props) => {
   const formContext = useContext(FormContext)
   const handleActive = () => {
     setLabelClass(pre => {
-      if(formContext.formState && !formContext.formState[name]) {
+      if(!formContext.formState || !formContext.formState[name]) {
         if (pre.includes("active")) {
           return ""
         } else {
@@ -85,7 +87,7 @@ const ComFormItem: FC<ComFormItemItf> = (props) => {
     })
   }
   const handleChange:ChangeEventHandler<HTMLInputElement> = (e) => {
-    formContext.updateStateFunc(name as string, e.target.valueOf())
+    formContext.updateStateFunc(name as string, e.target.value)
   }
 
   return (

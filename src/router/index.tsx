@@ -20,6 +20,7 @@ import Other from "../pages/other/other";
 
 import Access from "../pages/auth/access";
 import Forget from "../pages/auth/forget";
+import Test from "../pages/test";
 
 
 const router = createBrowserRouter([
@@ -55,7 +56,8 @@ const router = createBrowserRouter([
             { path: 'access', element: <Access /> },
             { path: 'forget', element: <Forget /> },
         ]
-    }
+    },
+    { path: "/test", element: <Test /> }
 ])
 
 export default router

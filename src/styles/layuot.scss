@@ -3,7 +3,7 @@
   height: 100vh;
   display: flex;
   &-sider {
-    background-color: #15181e !important;
+    background: linear-gradient(0deg, rgb(47, 54, 64) 50%, rgb(24, 27, 32) 100%) !important;
     .logo {
       display: flex;
       align-items: center;
@@ -118,6 +118,9 @@
   z-index: 0;
   padding: 16px;
   box-sizing: border-box;
+  .layout-content {
+    margin-top: 20vh;
+  }
   .layout-overlay, .layout-background {
     width: 100%;
     height: 100%;
