@@ -18,12 +18,12 @@ import Setting from "../pages/other/setting";
 import Other from "../pages/other/other";
 
 
-import Access from "../pages/auth/access";
 import Forget from "../pages/auth/forget";
 import SignIn from "../pages/auth/signIn";
 import SignUp from "../pages/auth/signUp";
 import Background from "../components/Background";
 import ShopList from "../pages/shop/list";
+import Test from "../pages/test";
 
 
 const router = createBrowserRouter([
@@ -56,13 +56,13 @@ const router = createBrowserRouter([
                 ]
             },
             { path: "other", element: <Other /> },
-            { path: "setting", element: <Setting /> }
+            { path: "setting", element: <Setting /> },
+            { path: "test", element: <Test /> }
         ],
     },
     {
         path: '/auth', element: <AuthLayout backBg={<Background />} />,
         children: [
-            { path: 'access', element: <Access /> },
             { path: 'signIn', element: <SignIn /> },
             { path: 'signUp', element: <SignUp /> },
             { path: 'forget', element: <Forget /> },

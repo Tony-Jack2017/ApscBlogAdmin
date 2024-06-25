@@ -1,9 +1,8 @@
-import {useNavigate, useRouteError} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import "../../styles/page/error.scss"
 import {useLayoutEffect, useRef} from "react";
 
 const ErrorPage = () => {
-    const error = useRouteError();
     const navigate = useNavigate()
     const cordCanvas = useRef<HTMLCanvasElement>(null)
     useLayoutEffect(() => {

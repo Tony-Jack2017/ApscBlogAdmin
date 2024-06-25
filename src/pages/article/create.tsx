@@ -1,5 +1,5 @@
 import { useState} from "react";
-import {Button, Form, GetProp, Input, message, Select, SelectProps, Upload, UploadFile, UploadProps} from "antd";
+import {Button, Form, GetProp, Input, message, Select, SelectProps, Upload, UploadProps} from "antd";
 import { SendOutlined, PlusOutlined, LoadingOutlined } from "@ant-design/icons"
 import TextArea from "antd/es/input/TextArea";
 import "../../styles/page/article/create.scss"
@@ -8,7 +8,6 @@ import Container from "../../layout/Container";
 import TextEditor from "../../components/Editor/Editor";
 
 import {createArticle} from "../../api/http/article";
-import {uploadFile} from "../../api/http/common";
 
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
 
@@ -56,6 +55,9 @@ const CreateArticle = () => {
     const handleChange = (value: string[], field: string) => {
         form.scrollToField({ [field]: value })
     }
+
+
+
     const handleUpload: UploadProps['onChange'] = (info) => {
         setImageUrl(info.file.url)
         if (info.file.status === 'uploading') {
@@ -72,25 +74,15 @@ const CreateArticle = () => {
             return;
         }
     };
-    const beforeUpload = (file: FileType) => {
-        const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
-        if (!isJpgOrPng) {
-            message.error('You can only upload JPG/PNG file!');
-        }
-        const isLt2M = file.size / 1024 / 1024 < 2;
-        if (!isLt2M) {
-            message.error('Image must smaller than 2MB!');
-        }
-        return isJpgOrPng && isLt2M;
-    };
+
+
+
     const uploadButton = (
         <button style={{ border: 0, background: 'none' }} type="button">
             {loading ? <LoadingOutlined /> : <PlusOutlined />}
             <div style={{ marginTop: 8 }}>Upload</div>
         </button>
     );
-
-
 
     return (
         <div className="article-create-page">
@@ -125,7 +117,6 @@ const CreateArticle = () => {
                         <Form.Item label="Cover" name="Cover" rules={[{ required: true, message: 'Please input the article title' }]}>
                             <Upload name="file" listType="picture-card" className="cover-uploader"
                                     action="http://127.0.0.1:9527/api/v1/common/file/upload"
-                                    beforeUpload={beforeUpload}
                                     onChange={handleUpload}
                                     showUploadList={false}
                             >

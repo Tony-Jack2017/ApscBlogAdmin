@@ -15,7 +15,7 @@ const TextEditor:FC<TextEditorProps> = (props) => {
     const initialValue = [
         {
             type: 'paragraph',
-            children: [{ text: 'A line of text in a paragraph.' }],
+            children: [{ text: 'Some words i want to writing here' }],
         },
     ]
     const onChange = (value:any) => {

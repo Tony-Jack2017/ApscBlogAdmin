@@ -2,7 +2,7 @@ import Container from "../../layout/Container";
 import {Button, Form, Input, message} from "antd";
 import {useForm} from "antd/es/form/Form";
 import "../../styles/page/auth/signUp.scss"
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {userRegister} from "../../api/http/user";
 import {useState} from "react";
 
@@ -61,7 +61,7 @@ const SignUp = () => {
                     <Form.Item name="confirm_password" rules={[{ required: true , message: "Please input the confirm password" }]} label="CONFIRM PASSWORD">
                         <Input type="password" placeholder="Confirm your password" />
                     </Form.Item>
-                    <Form.Item name="email" rules={[{ required: true , pattern: /^[A-Za-z0-9]+([_\.][A-Za-z0-9]+)*@([A-Za-z0-9\-]+\.)+[A-Za-z]{2,6}$/ , message: "Please input correct format email" }]} label="EMAIL">
+                    <Form.Item name="email" rules={[{ required: true , pattern: /^[A-Za-z0-9]+([_.][A-Za-z0-9]+)*@([A-Za-z0-9-]+\.)+[A-Za-z]{2,6}$/ , message: "Please input correct format email" }]} label="EMAIL">
                         <Input placeholder="Input your email" />
                     </Form.Item>
                     <Form.Item style={{marginBottom: 10,display: "flex", alignItems: "center", justifyContent: "center"}}>
@@ -70,7 +70,7 @@ const SignUp = () => {
                         </Button>
                     </Form.Item>
                     <Form.Item style={{display: "flex", alignItems: "center", justifyContent: "center"}} >
-                        <a onClick={() => { navigate("/auth/signIn") }} className="switch">I had a account</a>
+                        <Link to="/auth/signIn" className="switch">I had a account</Link>
                     </Form.Item>
                 </Form>
             </Container>

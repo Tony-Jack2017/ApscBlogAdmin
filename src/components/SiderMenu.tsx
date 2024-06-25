@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import {MenuItem, siderMenu} from "../common/menus";
+import {MenuItem} from "../common/menus";
 import {Menu} from "antd";
 import {useNavigate} from "react-router-dom";
 

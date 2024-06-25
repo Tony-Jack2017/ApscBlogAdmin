@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React from "react";
+import UploadFile from "../../components/UploadFile";
 
 
 type TestProp = {
@@ -8,6 +9,14 @@ type TestProp = {
 class Test extends React.Component<TestProp, any> {
     constructor(props: TestProp) {
         super(props);
+    }
+
+    render() {
+        return (
+            <div>
+                <UploadFile />
+            </div>
+        )
     }
 }
 

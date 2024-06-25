@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React, {CSSProperties, FC, Fragment, ReactNode, useEffect, useLayoutEffect, useRef, useState} from "react";
+import React, {CSSProperties, FC, Fragment, ReactNode, useLayoutEffect, useRef, useState} from "react";
 import ReactDOM from "react-dom";
 
 interface DropdownItf {
@@ -25,7 +25,6 @@ const Dropdown:FC<DropdownItf> = (props) => {
     const {
         children,
         content,
-        position
     } = props
     const [showDrop, setShowDrop] = useState<boolean>(false)
     const [rect, setRect] = useState<CSSProperties>()

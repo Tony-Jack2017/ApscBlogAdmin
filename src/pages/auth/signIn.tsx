@@ -2,7 +2,7 @@ import Container from "../../layout/Container";
 import {Button, Form, Input, message} from "antd";
 import {useForm} from "antd/es/form/Form";
 import "../../styles/page/auth/signIn.scss"
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {userLogin} from "../../api/http/user";
 import {useState} from "react";
 
@@ -56,7 +56,7 @@ const SignIn = () => {
                         <Button style={{width: 200}} shape="round" type="primary" htmlType="submit" loading={submitLoading}>LOGIN</Button>
                     </Form.Item>
                     <Form.Item style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
-                        <a onClick={() => { navigate("/auth/signUp") }} className="switch">I haven't a account</a>
+                        <Link to="/auth/signUp" className="switch">I haven't a account</Link>
                     </Form.Item>
                 </Form>
             </Container>
