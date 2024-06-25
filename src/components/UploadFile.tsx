@@ -71,8 +71,8 @@ const ComUploadFile:FC<UploadFileItf> = (props) => {
             <Upload {...uploadProps}>
                 {
                     fileMultiple ?
-                        fileList?.length > fileMultiple
-                        : fileList?.length >= 1 ? null : children
+                        fileList!.length >= fileMultiple ? null : children
+                        : fileList!.length >= 1 ? null : children
                 }
             </Upload>
         </div>
