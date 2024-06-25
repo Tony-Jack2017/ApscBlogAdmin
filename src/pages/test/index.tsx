@@ -1,5 +1,6 @@
 import React from "react";
-import UploadFile from "../../components/UploadFile";
+import ComUploadFile from "../../components/UploadFile";
+import Container from "../../layout/Container";
 
 
 type TestProp = {
@@ -7,14 +8,17 @@ type TestProp = {
 }
 
 class Test extends React.Component<TestProp, any> {
-    constructor(props: TestProp) {
+    constructor(props: TestProp, state: any) {
         super(props);
+
     }
 
     render() {
         return (
             <div>
-                <UploadFile />
+                <Container>
+                    <ComUploadFile url={"http://127.0.0.1:9527/api/v1/common/file/upload"} fileType="picture" />
+                </Container>
             </div>
         )
     }
