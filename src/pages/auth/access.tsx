@@ -81,8 +81,6 @@ const Access = () => {
           </ComForm>
         </div>
       </div>
-      
-
     </Container>
   )
 }

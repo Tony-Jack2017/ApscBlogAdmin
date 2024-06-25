@@ -20,7 +20,10 @@ import Other from "../pages/other/other";
 
 import Access from "../pages/auth/access";
 import Forget from "../pages/auth/forget";
-import Test from "../pages/test";
+import SignIn from "../pages/auth/signIn";
+import SignUp from "../pages/auth/signUp";
+import Background from "../components/Background";
+import ShopList from "../pages/shop/list";
 
 
 const router = createBrowserRouter([
@@ -46,18 +49,25 @@ const router = createBrowserRouter([
                     { path: "create", element: <ProjectCreate /> },
                 ]
             },
+            {
+                path: "shop",
+                children: [
+                    { path: "list", element: <ShopList /> },
+                ]
+            },
             { path: "other", element: <Other /> },
             { path: "setting", element: <Setting /> }
         ],
     },
     {
-        path: '/auth', element: <AuthLayout />,
+        path: '/auth', element: <AuthLayout backBg={<Background />} />,
         children: [
             { path: 'access', element: <Access /> },
+            { path: 'signIn', element: <SignIn /> },
+            { path: 'signUp', element: <SignUp /> },
             { path: 'forget', element: <Forget /> },
         ]
     },
-    { path: "/test", element: <Test /> }
 ])
 
 export default router

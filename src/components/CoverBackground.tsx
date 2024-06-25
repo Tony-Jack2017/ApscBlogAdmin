@@ -14,7 +14,7 @@ const CoverBackground:FC<CoverBackgroundItf> = (props) => {
         <div className={className} style={{zIndex: 0}}>
             { children }
             <div className="cover-bg">
-                <div className="background"></div>
+                <div className="cover-background"></div>
                 { cover && <img src={cover as string} alt="bg"/>}
             </div>
         </div>

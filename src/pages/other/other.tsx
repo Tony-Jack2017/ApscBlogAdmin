@@ -1,6 +1,8 @@
 const Other = () => {
     return (
-        <div></div>
+        <div className="">
+
+        </div>
     )
 }
 

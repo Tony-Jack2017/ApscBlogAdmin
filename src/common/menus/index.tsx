@@ -33,12 +33,14 @@ const siderMenu: MenuItem[] = [
             getItem('Project List', '/project/list'),
             getItem('Create Project', '/project/create')
         ]),
+        getItem('Vendor', 'sub3', <DeploymentUnitOutlined />,  [
+            getItem('StoreCenter', '/shop/list'),
+        ]),
     ],"group"),
     getItem("UserInfo", "userinfo", null, [
         getItem('Profile', '/profile', <UserOutlined />),
     ],"group"),
     getItem("Setting", "other", null, [
-        getItem('Vendor', '/other', <DeploymentUnitOutlined />),
         getItem('Setting', '/setting', <SettingOutlined />),
     ],"group"),
 ]

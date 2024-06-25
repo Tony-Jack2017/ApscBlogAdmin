@@ -1,10 +1,13 @@
 import Container from "../../layout/Container";
+import {Suspense} from "react";
 
 const DashboardPage = () => {
     return (
         <div className="dashboard-page">
             <Container>
-                This is dashboard Page
+                <Suspense>
+                    This is dashboard Page
+                </Suspense>
             </Container>
         </div>
     )

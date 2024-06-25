@@ -1,28 +1,24 @@
 import React from "react";
 import {Table, TableColumnsType} from "antd";
-import "../../styles/page/article/draftbox.scss"
-
+import "../../styles/page/shop/list.scss"
 
 import Container from "../../layout/Container";
 
+
 interface DataType {
     key: React.Key;
-    article_id: number
-    title: string
-    status: string
-    readNum: number
-    tags: string
-    topic: string
+    project_id: number
+    project_name: string
+    project_cover: string
+    description: string
     created_at: string | number
 }
 
 const columns: TableColumnsType<DataType> = [
-    { title: 'ArticleID', dataIndex: 'article_id' },
-    { title: 'ArticleTitle', dataIndex: 'title' },
-    { title: 'View Number', dataIndex: 'readNum' },
-    { title: 'Status', dataIndex: 'status'},
-    { title: 'Tags', dataIndex: 'tags' },
-    { title: 'Topic', dataIndex: 'tags' },
+    { title: 'ProjectID', dataIndex: 'project_id' },
+    { title: 'ProjectName', dataIndex: 'project_name' },
+    { title: 'ProjectCover', dataIndex: 'project_cover' },
+    { title: 'Description', dataIndex: 'description'},
     { title: 'Created Time', dataIndex: 'created_at' },
     {
         title: 'Action',
@@ -39,22 +35,21 @@ const data: DataType[] = [];
 for (let i = 0; i < 100; i++) {
     data.push({
         key: i,
-        article_id: 1,
-        title: `How to do yourself in the social`,
-        readNum: 32,
-        status: `London, Park Lane no. ${i}`,
-        tags: "Javascript",
-        topic: "Web Front",
+        project_id: 1,
+        project_name: "Apsc Builder Blog Admin",
+        project_cover: "http://192.168.1.7:9000",
+        description: "The admin website for apsc builder blog",
         created_at: "2024-06-10 12:58:63"
     });
 }
-const DraftBox = () => {
+
+const ShopList = () => {
     return (
-        <div className="draftbox-list-page">
-            <Container className="draftbox-list">
+        <div className="shop-list-page">
+            <Container className="shop-list">
                 <div className="list-header">
                     <span className="title">
-                        This Draft Box List
+                        This Shop Center
                     </span>
                 </div>
                 <div className="list-content">
@@ -69,4 +64,4 @@ const DraftBox = () => {
     )
 }
 
-export default DraftBox
+export default ShopList

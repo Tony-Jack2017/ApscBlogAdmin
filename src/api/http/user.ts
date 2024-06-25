@@ -3,11 +3,11 @@ import instance from "../config/http";
 export const checkUserInfo = () => {
     return instance.get("/user/check")
 }
-export const userRegister = () => {
-    return instance.post("/user/create")
+export const userRegister = (data: any) => {
+    return instance.post("/user/create", data)
 }
-export const userLogin = () => {
-  return instance.post("/user/login")
+export const userLogin = (data:any) => {
+  return instance.post("/user/login", data)
 }
 
 export const getUserList = () => {
