@@ -1,5 +1,7 @@
+import { Button } from "antd";
+import { UploadOutlined } from "@ant-design/icons"
 import React from "react";
-import ComUploadFile from "../../components/UploadFile";
+import ComUploadFile from "../../components/ComUploadFile";
 import Container from "../../layout/Container";
 
 
@@ -17,7 +19,9 @@ class Test extends React.Component<TestProp, any> {
         return (
             <div>
                 <Container>
-                    <ComUploadFile url={"http://127.0.0.1:9527/api/v1/common/file/upload"} fileType="picture" />
+                    <ComUploadFile url={"http://127.0.0.1:9527/api/v1/common/file/upload"} fileType="picture">
+                        <Button icon={<UploadOutlined />}>Click to Upload</Button>
+                    </ComUploadFile>
                 </Container>
             </div>
         )
