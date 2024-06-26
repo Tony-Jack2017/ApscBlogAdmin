@@ -1,5 +1,5 @@
-import {CSSProperties, FC, ReactNode, useState} from "react";
-import {message, Upload, GetProp, UploadFile, UploadProps} from "antd";
+import React, {CSSProperties, FC, ReactNode, useState} from "react";
+import {message, Upload, Image, GetProp, UploadFile, UploadProps} from "antd";
 
 interface UploadFileItf {
   autoUpload?: boolean
@@ -14,14 +14,31 @@ interface UploadFileItf {
 
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
 
+const getBase64 = (file: FileType): Promise<string> =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = (error) => reject(error);
+    });
+
+
 const ComUploadFile: FC<UploadFileItf> = (props) => {
   const {
     url, fileType, editable, autoUpload,
     fileMultiple,
     className, style, children
   } = props
-  console.log(editable, autoUpload)
-  const [fileList, setFileList] = useState<UploadFile[]>([])
+  const [fileList, setFileList] = useState<UploadFile[]>([
+    {
+      uid: '0',
+      name: 'image.png',
+      status: 'done',
+      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+    }
+  ])
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const [previewImage, setPreviewImage] = useState('');
   const beforeUpload = (file: FileType) => {
     const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
     if (!isJpgOrPng) {
@@ -33,46 +50,55 @@ const ComUploadFile: FC<UploadFileItf> = (props) => {
     }
     return isJpgOrPng && isLt2M;
   };
-  const handleChange: UploadProps['onChange'] = (info) => {
+  const handleChange: UploadProps['onChange'] = ({file, fileList: newFileList, event}) => {
 
-    setFileList((pre: UploadFile[] | undefined) => {
-      if (fileMultiple) {
-        if (pre) {
-          return [info.file, ...pre]
-        } else {
-          return [info.file]
-        }
-      } else {
-        return [info.file]
-      }
-    })
-    if (info.file.status === 'uploading') {
+    setFileList(newFileList)
+    if (file.status === 'uploading') {
       return;
     }
-    if (info.file.status === 'done') {
-      console.log(info.event)
+    if (file.status === 'done') {
       return;
     }
-    if (info.file.status === 'error') {
+    if (file.status === 'error') {
       return;
     }
   };
+  const handlePreview = async (file: UploadFile) => {
+    if (!file.url && !file.preview) {
+      file.preview = await getBase64(file.originFileObj as FileType);
+    }
 
-  const uploadProps = {
-    accept: autoUpload ? url : undefined,
-    listStyle: fileType === "picture" ? "picture-card" : "picture-card",
+    setPreviewImage(file.url || (file.preview as string));
+    setPreviewOpen(true);
+  };
+
+  const uploadProps: UploadProps = {
+    action: autoUpload ? url : undefined,
+    listType: "picture-card",
     beforeUpload: beforeUpload,
     fileList: fileList,
-    onChange: handleChange
+    onChange: handleChange,
+    onPreview: handlePreview,
   }
 
   return (
     <div className={`upload-file ${className}`} style={style}>
-      <Upload {...uploadProps}>
+      <Upload  {...uploadProps}>
         {
           fileList.length >= (fileMultiple ? fileMultiple : 1) ? null : children
         }
       </Upload>
+      {previewImage && (
+          <Image
+              wrapperStyle={{ display: 'none' }}
+              preview={{
+                visible: previewOpen,
+                onVisibleChange: (visible) => setPreviewOpen(visible),
+                afterOpenChange: (visible) => !visible && setPreviewImage(''),
+              }}
+              src={previewImage}
+          />
+      )}
     </div>
   )
 }
