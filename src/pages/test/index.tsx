@@ -1,9 +1,7 @@
-import { Button } from "antd";
-import { UploadOutlined } from "@ant-design/icons"
 import React from "react";
+import { PlusOutlined } from "@ant-design/icons"
 import ComUploadFile from "../../components/ComUploadFile";
 import Container from "../../layout/Container";
-
 
 type TestProp = {
 
@@ -19,8 +17,11 @@ class Test extends React.Component<TestProp, any> {
         return (
             <div>
                 <Container>
-                    <ComUploadFile url={"http://127.0.0.1:9527/api/v1/common/file/upload"} fileType="picture">
-                        <Button icon={<UploadOutlined />}>Click to Upload</Button>
+                    <ComUploadFile customClass="custom-upload" url={"http://127.0.0.1:9527/api/v1/common/file/upload"} fileType="picture">
+                        <button style={{ border: 0, background: 'none' }} type="button">
+                            <PlusOutlined />
+                            <div style={{ marginTop: 8 }}>Upload</div>
+                        </button>
                     </ComUploadFile>
                 </Container>
             </div>

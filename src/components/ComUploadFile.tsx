@@ -7,7 +7,7 @@ interface UploadFileItf {
   url: string
   fileType?: "picture" | "file"
   fileMultiple?: false | Number
-  className?: string
+  customClass?: string
   style?: CSSProperties
   children?: ReactNode
 }
@@ -27,7 +27,7 @@ const ComUploadFile: FC<UploadFileItf> = (props) => {
   const {
     url, fileType, editable, autoUpload,
     fileMultiple,
-    className, style, children
+    customClass, style, children
   } = props
   const [fileList, setFileList] = useState<UploadFile[]>([
     {
@@ -79,13 +79,14 @@ const ComUploadFile: FC<UploadFileItf> = (props) => {
     fileList: fileList,
     onChange: handleChange,
     onPreview: handlePreview,
+    className: customClass
   }
 
   return (
-    <div className={`upload-file ${className}`} style={style}>
+    <div className="upload-file" style={style}>
       <Upload  {...uploadProps}>
         {
-          fileList.length >= (fileMultiple ? fileMultiple : 1) ? null : children
+          fileList.length >= (fileMultiple ? fileMultiple : 2) ? null : children
         }
       </Upload>
       {previewImage && (
