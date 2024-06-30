@@ -1,5 +1,6 @@
 import React, {CSSProperties, FC, ReactNode, useState} from "react";
 import {message, Upload, Image, GetProp, UploadFile, UploadProps} from "antd";
+import classNames from "classnames";
 
 interface UploadFileItf {
   autoUpload?: boolean
@@ -71,7 +72,9 @@ const ComUploadFile: FC<UploadFileItf> = (props) => {
     setPreviewImage(file.url || (file.preview as string));
     setPreviewOpen(true);
   };
-
+  const classes = classNames(
+      "upload-file",
+  )
   const uploadProps: UploadProps = {
     action: autoUpload ? url : undefined,
     listType: "picture-card",
@@ -83,10 +86,10 @@ const ComUploadFile: FC<UploadFileItf> = (props) => {
   }
 
   return (
-    <div className="upload-file" style={style}>
+    <div className={classes} style={style}>
       <Upload  {...uploadProps}>
         {
-          fileList.length >= (fileMultiple ? fileMultiple : 2) ? null : children
+          fileList.length >= (fileMultiple ? fileMultiple : 1) ? null : children
         }
       </Upload>
       {previewImage && (
