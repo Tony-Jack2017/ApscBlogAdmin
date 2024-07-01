@@ -1,5 +1,6 @@
 import React, {CSSProperties, FC, ReactNode, useState} from "react";
 import {message, Upload, Image, GetProp, UploadFile, UploadProps} from "antd";
+import { PlusOutlined } from "@ant-design/icons"
 import classNames from "classnames";
 
 interface UploadFileItf {
@@ -23,11 +24,19 @@ const getBase64 = (file: FileType): Promise<string> =>
       reader.onerror = (error) => reject(error);
     });
 
+const DefaultChildren = () => {
+  return (
+      <button style={{ border: 0, background: 'none' }} type="button">
+        <PlusOutlined />
+        <div style={{ marginTop: 8 }}>Upload</div>
+      </button>
+  )
+}
 
 const ComUploadFile: FC<UploadFileItf> = (props) => {
   const {
     url, fileType, editable, autoUpload,
-    fileMultiple,
+    fileMultiple = false,
     customClass, style, children
   } = props
   const [fileList, setFileList] = useState<UploadFile[]>([
@@ -90,7 +99,7 @@ const ComUploadFile: FC<UploadFileItf> = (props) => {
     <div className={classes} style={style}>
       <Upload  {...uploadProps}>
         {
-          fileList.length >= (fileMultiple ? fileMultiple : 1) ? null : children
+          fileList.length >= (fileMultiple ? fileMultiple : 1) ? null : children ? children : <DefaultChildren />
         }
       </Upload>
       {previewImage && (

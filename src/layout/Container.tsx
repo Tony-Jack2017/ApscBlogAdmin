@@ -18,8 +18,8 @@ const Container:FC<ContainerItf> = (props) => {
 
     const classes = classNames(
         "container",
-        className,
         { "container-default": !isNoStyle },
+        className,
     )
 
     return (
