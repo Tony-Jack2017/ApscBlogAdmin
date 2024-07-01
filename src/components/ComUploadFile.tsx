@@ -74,6 +74,7 @@ const ComUploadFile: FC<UploadFileItf> = (props) => {
   };
   const classes = classNames(
       "upload-file",
+      `file-${fileMultiple ? "multiple" : "single"}`
   )
   const uploadProps: UploadProps = {
     action: autoUpload ? url : undefined,
