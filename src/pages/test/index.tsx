@@ -17,12 +17,14 @@ class Test extends React.Component<TestProp, any> {
         return (
             <div>
                 <Container>
-                    <ComUploadFile customClass="custom-upload" url={"http://127.0.0.1:9527/api/v1/common/file/upload"} fileType="picture">
-                        <button style={{ border: 0, background: 'none' }} type="button">
-                            <PlusOutlined />
-                            <div style={{ marginTop: 8 }}>Upload</div>
-                        </button>
-                    </ComUploadFile>
+                    <div style={{ width: 300, height: 200 }}>
+                        <ComUploadFile customClass="custom-upload" url={"http://127.0.0.1:9527/api/v1/common/file/upload"} fileType="picture">
+                            <button style={{ border: 0, background: 'none' }} type="button">
+                                <PlusOutlined />
+                                <div style={{ marginTop: 8 }}>Upload</div>
+                            </button>
+                        </ComUploadFile>
+                    </div>
                 </Container>
             </div>
         )
