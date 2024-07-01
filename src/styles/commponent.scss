@@ -1,9 +1,10 @@
+@import "./var.scss";
+
 // Fonts
 $mainFont: 'Raleway', sans-serif;
 $subFont: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 
   // Color Scheme
-$primaryColor: #1677ff;
 $secondaryColor: #f7edd5;
 $inputColor: #bbbbbb;
 
@@ -294,12 +295,15 @@ $inputColor: #bbbbbb;
     height: 100%;
     .ant-upload-list-picture-card {
       .ant-upload-select {
-        background: rgba(0, 0, 0, .1);
-        border: none;
+        background: rgba($primaryColor, .01);
+        border: 2px solid rgba($primaryColor, 0);
         &:hover {
-          border: 2px solid black;
+          border: 2px solid $primaryColor;
         }
-        @media (min-width: 1512px) and (max-width: 1728px) {}
+        @media (min-width: 1512px) and (max-width: 1728px) {
+          width: 200px;
+          height: 140px
+        }
         @media (min-width: 1920px) {
           width: 300px;
           height: 200px;
@@ -310,15 +314,11 @@ $inputColor: #bbbbbb;
   &.file-single {
     .ant-upload-wrapper.ant-upload-picture-card-wrapper {
       .ant-upload-list-picture-card {
+        width: inherit;
+        height: inherit;
         .ant-upload-list-item-container {
-          width: 100%;
-          height: 100%;
-        }
-      }
-      @media (min-width: 1512px) and (max-width: 1728px) {
-        .ant-upload-select {
-          width: 200px;
-          height: 200px;
+          width: inherit;
+          height: inherit;
         }
       }
     }
