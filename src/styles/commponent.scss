@@ -296,6 +296,12 @@ $inputColor: #bbbbbb;
           border: 2px solid black;
         }
       }
+      @media (min-width: 1512px) and (max-width: 1728px) {
+        .ant-upload-select {
+          width: 200px;
+          height: 200px;
+        }
+      }
     }
   }
 }
