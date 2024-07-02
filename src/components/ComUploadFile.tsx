@@ -39,14 +39,7 @@ const ComUploadFile: FC<UploadFileItf> = (props) => {
     fileMultiple = false,
     customClass, style, children
   } = props
-  const [fileList, setFileList] = useState<UploadFile[]>([
-    {
-      uid: '0',
-      name: 'image.png',
-      status: 'done',
-      url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-    }
-  ])
+  const [fileList, setFileList] = useState<UploadFile[]>([])
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState('');
   const beforeUpload = (file: FileType) => {
@@ -87,7 +80,7 @@ const ComUploadFile: FC<UploadFileItf> = (props) => {
   )
   const uploadProps: UploadProps = {
     action: autoUpload ? url : undefined,
-    listType: "picture-card",
+    listType: fileType === "picture" ? "picture-card" : "text",
     beforeUpload: beforeUpload,
     fileList: fileList,
     onChange: handleChange,

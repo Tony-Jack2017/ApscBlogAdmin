@@ -44,7 +44,7 @@ const ArticleContent:FC<ArticleContentItf> = (props) => {
     } = props
 
     const handleChose = (type: string) => {
-        updateInfo({"type": type})
+        updateInfo({"type": type, afterDisable: false})
     }
     const handleContent = (content:string) => {
         onChangeContent(content)
@@ -63,7 +63,7 @@ const ArticleContent:FC<ArticleContentItf> = (props) => {
                     <TextEditor onChange={handleContent} />
                 </div>
             );
-        case "3-file" || "3-write":
+        case "3-write": case "3-file":
             return (
                 <div className="article-form">
                     <Form form={form} layout="vertical" size="large">
@@ -78,6 +78,11 @@ const ArticleContent:FC<ArticleContentItf> = (props) => {
                         </Form.Item>
                         <Form.Item label="Description" name="description" rules={[{ required: true, message: 'Please input the article title' }]}>
                             <TextArea placeholder="Please input description about article" autoSize={{ minRows: 3, maxRows: 5 }} />
+                        </Form.Item>
+                        <Form.Item label="Cover" name="cover">
+                            <div style={{ height: 200 }}>
+                                <ComUploadFile url="http://127.0.0.1:8080/api/v1/common/upload_file" fileType="picture" />
+                            </div>
                         </Form.Item>
                     </Form>
                 </div>
@@ -113,7 +118,7 @@ const ArticleContent:FC<ArticleContentItf> = (props) => {
 const CreateArticle = () => {
     const [form] = Form.useForm()
     const [content, setContent] = useState<string>()
-    const [sendLoading, setSendLoading] = useState(false)
+    const [commitLoading, setCommitLoading] = useState(false)
     const [articleInfo, setArticleInfo] = useState({
         type: "",
         step: 1,
@@ -123,13 +128,11 @@ const CreateArticle = () => {
         preTitle: "Last Step",
         preDisable: false,
         preIcon: <ArrowLeftOutlined />,
-        preLoading: false,
 
         afterVisible: true,
         afterTitle: "Next Step",
-        afterDisable: false,
+        afterDisable: true,
         afterIcon: <ArrowRightOutlined />,
-        afterLoading: false,
     })
     const updateArticleState = ( art: object) => {
         setArticleInfo(pre => {
@@ -140,33 +143,47 @@ const CreateArticle = () => {
     }
 
     const handlePre = () => {
-        switch (articleInfo.type + "-" + articleInfo.step) {
-            case "3-file" || "3-write":
-                createArticle({
-                    content: content
-                }).then(res => {
-
-                }).catch(err => {
-
-                })
+        switch (articleInfo.step+ "-" + articleInfo.type) {
+            case "3-file": case "3-write":
+                form.resetFields()
                 break
+            case "2-file": case "2-write":
+                updateArticleState({
+                    preVisible: articleInfo.step > 2,
+                    title: "Chose a way to create your article",
+                    afterDisable: false,
+                    step: articleInfo.step - 1
+                })
+                break;
             default:
                 updateArticleState({"preVisible": articleInfo.step > 2, step: articleInfo.step - 1})
         }
     }
     const handleNext = () => {
-        switch (articleInfo.type + "-" + articleInfo.step) {
-            case "3-file" || "3-write":
-                createArticle({
-                    content: content
-                }).then(res => {
-
-                }).catch(err => {
-
+        switch (articleInfo.step + "-" + articleInfo.type) {
+            case "3-file": case "3-write":
+                setCommitLoading(true)
+                form.validateFields().then(value => {
+                    createArticle({
+                        content: content
+                    }).then(res => {
+                        setCommitLoading(false)
+                    }).catch(err => {
+                        setCommitLoading(false)
+                    })
+                }).catch(errInfo => {
+                    setCommitLoading(false)
                 })
-                break
+
+                break;
+            case "2-file": case "2-write":
+                updateArticleState({
+                    title: "Complete the article' info",
+                    step: articleInfo.step + 1
+                })
+                break;
             default:
-                updateArticleState({"preVisible": true, step: articleInfo.step + 1})
+                updateArticleState({"preVisible": true, step: articleInfo.step + 1, afterDisable: true})
         }
     }
 
@@ -185,12 +202,12 @@ const CreateArticle = () => {
                 <div className="container-footer">
                     <div className="action">
                         { articleInfo.preVisible &&
-                            <Button loading={articleInfo.preLoading} disabled={articleInfo.preDisable}
+                            <Button disabled={articleInfo.preDisable}
                                     iconPosition="start" icon={articleInfo.preIcon} onClick={handlePre}>
                                 {articleInfo.preTitle}
                             </Button>}
                         { articleInfo.afterVisible &&
-                            <Button loading={articleInfo.afterLoading} disabled={articleInfo.afterDisable}
+                            <Button loading={commitLoading} disabled={articleInfo.afterDisable}
                                     iconPosition="end" icon={articleInfo.afterIcon} onClick={handleNext} type="primary">
                                 {articleInfo.afterTitle}
                             </Button>}

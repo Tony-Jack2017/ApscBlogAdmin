@@ -296,10 +296,11 @@ $inputColor: #bbbbbb;
     .ant-upload-list-picture-card {
       .ant-upload-select {
         background: rgba($primaryColor, .01);
-        border: 2px solid rgba($primaryColor, .2);
+        border: 1px solid rgba(0, 0, 0, .2);
         &:hover {
-          background-color: rgba($primaryColor, .05);
-          border: 2px solid $primaryColor;
+          color: $primaryColor;
+          background-color: rgba($primaryColor, .02);
+          border: 1px solid $primaryColor;
         }
         @media (min-width: 1512px) and (max-width: 1728px) {
           width: 200px;

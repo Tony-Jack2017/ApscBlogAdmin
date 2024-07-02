@@ -1,4 +1,5 @@
 import axios from "axios";
+import {message} from "antd";
 
 const baseUrl = process.env.REACT_APP_API_URL
 
@@ -16,6 +17,9 @@ instance.interceptors.request.use((config) => {
 instance.interceptors.response.use((value) => {
     return Promise.resolve(value)
 },(err) => {
+    if(err.code === "ERR_NETWORK") {
+        message.error("Error Network, Please check your network is working")
+    }
     return Promise.reject(err)
 })
 
