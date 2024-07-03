@@ -2,6 +2,7 @@ import React, {CSSProperties, FC, ReactNode, useState} from "react";
 import {message, Upload, Image, GetProp, UploadFile, UploadProps} from "antd";
 import { PlusOutlined } from "@ant-design/icons"
 import classNames from "classnames";
+import {UploadFileStatus} from "antd/lib/upload/interface";
 
 interface UploadFileItf {
   autoUpload?: boolean
@@ -10,6 +11,7 @@ interface UploadFileItf {
   fileType?: "picture" | "file"
   fileMultiple?: false | Number
   customClass?: string
+  onChange?: (fileStatus: UploadFileStatus, fileUrl: string | undefined) => void
   style?: CSSProperties
   children?: ReactNode
 }
@@ -35,9 +37,10 @@ const DefaultChildren = () => {
 
 const ComUploadFile: FC<UploadFileItf> = (props) => {
   const {
-    url, fileType, editable, autoUpload,
+    url, fileType, editable, autoUpload = true,
     fileMultiple = false,
-    customClass, style, children
+    customClass, style, children,
+    onChange
   } = props
   const [fileList, setFileList] = useState<UploadFile[]>([])
   const [previewOpen, setPreviewOpen] = useState(false);
@@ -54,15 +57,21 @@ const ComUploadFile: FC<UploadFileItf> = (props) => {
     return isJpgOrPng && isLt2M;
   };
   const handleChange: UploadProps['onChange'] = ({file, fileList: newFileList, event}) => {
-
     setFileList(newFileList)
     if (file.status === 'uploading') {
       return;
     }
     if (file.status === 'done') {
+      message.success(file.response.message)
+      if (onChange) {
+        onChange(file.status as UploadFileStatus, file.response.data.url)
+      }
       return;
     }
     if (file.status === 'error') {
+      if (onChange) {
+        onChange(file.status as UploadFileStatus, file.url)
+      }
       return;
     }
   };

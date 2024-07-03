@@ -1,16 +1,15 @@
-import React, {FC, useState} from "react";
-import {Button, Form, FormInstance,  Input, Select, SelectProps} from "antd";
-import { CheckCircleOutlined, ArrowRightOutlined, ArrowLeftOutlined } from "@ant-design/icons"
+import React, {FC, forwardRef, useEffect, useImperativeHandle, useRef, useState} from "react";
+import { Button, Form, FormInstance,  Input, Select, SelectProps } from "antd";
+import { CheckCircleOutlined, ArrowRightOutlined, ArrowLeftOutlined, SendOutlined } from "@ant-design/icons"
 import TextArea from "antd/es/input/TextArea";
 import "../../styles/page/article/create.scss"
+import {UploadFileStatus} from "antd/lib/upload/interface";
 
 import {createArticle} from "../../api/http/article";
-
 
 import Container from "../../layout/Container";
 import TextEditor from "../../components/Editor/Editor";
 import ComUploadFile from "../../components/ComUploadFile";
-
 
 
 const tagOptions: SelectProps['options'] = [
@@ -36,25 +35,54 @@ interface ArticleContentItf {
     onChangeContent: (value: string) => void
     updateInfo: (obj: object) => void
 }
-
-const ArticleContent:FC<ArticleContentItf> = (props) => {
+const ArticleContent = forwardRef<any, ArticleContentItf>((props, ref) => {
     const {
-        type, step, form ,
+        type, step, form,
         onChangeContent, updateInfo
     } = props
 
     const handleChose = (type: string) => {
-        updateInfo({"type": type, afterDisable: false})
+        updateInfo({ type: type })
     }
     const handleContent = (content:string) => {
         onChangeContent(content)
+        if(content) {
+            updateInfo({ contentCorrect: true })
+        }
     }
+    const handleUpload = (fileStatus: UploadFileStatus, fileUrl: string | undefined) => {
+        if(fileStatus === "done" && fileUrl) {
+            updateInfo({ contentCorrect: true })
+        }else {
+            updateInfo({ contentCorrect: false })
+        }
+    }
+
+    const clearContent = () => {
+        switch (step + "-" + type) {
+            case "2-file":
+                break
+            case "2-write":
+                break
+            case "3-write": case "3-file":
+                form.resetFields()
+                break
+            default:
+                break
+        }
+    }
+    useImperativeHandle(ref, () => ({
+        ClearContent: clearContent,
+    }));
 
     switch (step + "-" + type) {
         case "2-file":
             return (
                 <div className="file-content">
-                    <ComUploadFile url="http://127.0.0.1:8080/api/v1/common/upload_file" fileType="picture" />
+                    <ComUploadFile url="http://127.0.0.1:9527/api/v1/common/file/upload"
+                                   fileType="picture"
+                                   onChange={handleUpload}
+                    />
                 </div>
             );
         case "2-write":
@@ -113,17 +141,19 @@ const ArticleContent:FC<ArticleContentItf> = (props) => {
                 </div>
             )
     }
-}
-
+})
 const CreateArticle = () => {
     const [form] = Form.useForm()
+    const articleContent = useRef<any>(null)
     const [content, setContent] = useState<string>()
     const [commitLoading, setCommitLoading] = useState(false)
     const [articleInfo, setArticleInfo] = useState({
         type: "",
         step: 1,
         title: "Chose a way to create your article",
-
+        contentCorrect: false,
+    })
+    const [ action, setAction ] = useState({
         preVisible: false,
         preTitle: "Last Step",
         preDisable: false,
@@ -134,6 +164,44 @@ const CreateArticle = () => {
         afterDisable: true,
         afterIcon: <ArrowRightOutlined />,
     })
+
+
+
+    useEffect(() => {
+        switch (articleInfo.step+ "-" + articleInfo.type) {
+            case "3-file": case "3-write":
+                updateArticleState({
+                    title: "Complete your article info"
+                })
+                updateActionState({
+                    preVisible: articleInfo.step > 1,
+                })
+                break
+            case "2-file": case "2-write":
+                updateArticleState({
+                    title: "Some words your want to publish",
+                })
+                updateActionState({
+                    preVisible: articleInfo.step > 1,
+
+                    afterDisable: !articleInfo.contentCorrect,
+                    afterTitle: "Publish",
+                    afterIcon: <SendOutlined />
+                })
+                break;
+            default:
+                updateArticleState({
+                    title: "Chose a way to create your article",
+                    contentCorrect: articleInfo.type !== ""
+                })
+                updateActionState({
+                    preVisible: articleInfo.step > 1,
+                    afterDisable: articleInfo.type === "",
+                })
+                break;
+        }
+
+    }, [articleInfo.type, articleInfo.step, articleInfo.contentCorrect])
     const updateArticleState = ( art: object) => {
         setArticleInfo(pre => {
             return {
@@ -141,23 +209,19 @@ const CreateArticle = () => {
                 ...art
             }})
     }
+    const updateActionState = ( art: object) => {
+        setAction(pre => {
+            return {
+                ...pre,
+                ...art
+            }})
+    }
 
     const handlePre = () => {
-        switch (articleInfo.step+ "-" + articleInfo.type) {
-            case "3-file": case "3-write":
-                form.resetFields()
-                break
-            case "2-file": case "2-write":
-                updateArticleState({
-                    preVisible: articleInfo.step > 2,
-                    title: "Chose a way to create your article",
-                    afterDisable: false,
-                    step: articleInfo.step - 1
-                })
-                break;
-            default:
-                updateArticleState({"preVisible": articleInfo.step > 2, step: articleInfo.step - 1})
-        }
+        articleContent.current.ClearContent()
+        updateArticleState({
+            step: articleInfo.step === 3 ? 3 : articleInfo.step - 1
+        })
     }
     const handleNext = () => {
         switch (articleInfo.step + "-" + articleInfo.type) {
@@ -174,7 +238,6 @@ const CreateArticle = () => {
                 }).catch(errInfo => {
                     setCommitLoading(false)
                 })
-
                 break;
             case "2-file": case "2-write":
                 updateArticleState({
@@ -183,7 +246,10 @@ const CreateArticle = () => {
                 })
                 break;
             default:
-                updateArticleState({"preVisible": true, step: articleInfo.step + 1, afterDisable: true})
+                updateArticleState({
+                    contentCorrect: false,
+                    step: articleInfo.step === 3 ? 3 : articleInfo.step + 1
+                })
         }
     }
 
@@ -194,22 +260,22 @@ const CreateArticle = () => {
                     <span className="title"> { articleInfo.title } </span>
                 </div>
                 <div className="container-content">
-                    <ArticleContent type={articleInfo.type} step={articleInfo.step} form={form}
+                    <ArticleContent ref={articleContent} type={articleInfo.type} step={articleInfo.step} form={form}
                                     onChangeContent={(value) => { setContent(value) }}
                                     updateInfo={updateArticleState}
                     />
                 </div>
                 <div className="container-footer">
                     <div className="action">
-                        { articleInfo.preVisible &&
-                            <Button disabled={articleInfo.preDisable}
-                                    iconPosition="start" icon={articleInfo.preIcon} onClick={handlePre}>
-                                {articleInfo.preTitle}
+                        { action.preVisible &&
+                            <Button disabled={action.preDisable}
+                                    iconPosition="start" icon={action.preIcon} onClick={handlePre}>
+                                {action.preTitle}
                             </Button>}
-                        { articleInfo.afterVisible &&
-                            <Button loading={commitLoading} disabled={articleInfo.afterDisable}
-                                    iconPosition="end" icon={articleInfo.afterIcon} onClick={handleNext} type="primary">
-                                {articleInfo.afterTitle}
+                        { action.afterVisible &&
+                            <Button loading={commitLoading} disabled={action.afterDisable}
+                                    iconPosition="end" icon={action.afterIcon} onClick={handleNext} type="primary">
+                                {action.afterTitle}
                             </Button>}
                     </div>
                 </div>

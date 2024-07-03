@@ -5,16 +5,17 @@ import { Slate, Editable, withReact } from 'slate-react'
 type TextEditorProps = {
     title?: string
     onChange?: (content: string) => void
+    initialValue?: string
 }
 
 const TextEditor:FC<TextEditorProps> = (props) => {
 
-    const { onChange } = props
+    const { initialValue, onChange } = props
     const [editor] = useState(() => withReact(createEditor()))
-    const initialValue = [
+    const value = [
         {
             type: 'paragraph',
-            children: [{ text: 'Some words i want to writing here' }],
+            children: [{ text: initialValue ? initialValue : "Some words i want to writing here" }],
         },
     ]
     const handleChange = (value:any) => {
@@ -30,7 +31,7 @@ const TextEditor:FC<TextEditorProps> = (props) => {
     }
     return (
         <div className="text-editor">
-            <Slate editor={editor} initialValue={initialValue} onChange={handleChange}>
+            <Slate editor={editor} initialValue={value} onChange={handleChange}>
                 <Editable className="editor" style={{ minHeight: 500, outline: "none", padding: 16 }} />
             </Slate>
         </div>
