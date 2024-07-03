@@ -60,10 +60,6 @@ const ArticleContent = forwardRef<any, ArticleContentItf>((props, ref) => {
 
     const clearContent = () => {
         switch (step + "-" + type) {
-            case "2-file":
-                break
-            case "2-write":
-                break
             case "3-write": case "3-file":
                 form.resetFields()
                 break
@@ -220,7 +216,7 @@ const CreateArticle = () => {
     const handlePre = () => {
         articleContent.current.ClearContent()
         updateArticleState({
-            step: articleInfo.step === 3 ? 3 : articleInfo.step - 1
+            step: articleInfo.step === 1 ? 1 : articleInfo.step - 1
         })
     }
     const handleNext = () => {
