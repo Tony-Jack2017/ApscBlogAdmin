@@ -1,0 +1,89 @@
+.common-form {
+  .form-item {
+    margin-bottom: 20px;
+    position: relative;
+    &.hasError {
+      input {
+        border-color: $primaryColor !important
+      }
+      label {
+        color: $primaryColor !important
+      }
+    }
+  }
+  label {
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-family: $subFont;
+    transform: translateY(40px);
+    transition: all 0.4s;
+    cursor: text;
+    z-index: -1;
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 8px;
+    &.active {
+      transform: translateY(10px);
+      font-size: 12px;
+    }
+    &.fontSwitch {
+      font-family: $mainFont !important;
+      font-weight: 600;
+    }
+  }
+  input:not([type=submit]) {
+    background: none;
+    outline: none;
+    border: none;
+    display: block;
+    padding: 10px 0;
+    width: 100%;
+    border-bottom: 2px solid #494848;
+    color: #444;
+    font-size: 15px;
+    font-family: Poppin, sans-serif;
+    z-index: 1;
+    &.hasError {
+      border-color: $primaryColor;
+    }
+  }
+  span.error {
+    color: $primaryColor;
+    font-family: $subFont;
+    font-size: 12px;
+    position: absolute;
+    bottom: -20px;
+    right: 0;
+    display: none;
+  }
+  input[type=password] {
+    color: $primaryColor;
+  }
+  .CTA {
+    margin-top: 30px;
+    input {
+      font-size: 12px;
+      text-transform: uppercase;
+      padding: 5px 30px;
+      background: $primaryColor;
+      color: #fff;
+      border-radius: 30px;
+      margin-right: 20px;
+      border: none;
+      font-family: $subFont;
+    }
+  }
+  a.switch {
+    font-size: 16px;
+    font-weight: 300;
+    font-family: $subFont;
+    color: $inputColor;
+    text-decoration: underline;
+    transition: all 0.3s;
+    margin-left: 24px;
+    &:hover {
+      color: $primaryColor
+    }
+  }
+}

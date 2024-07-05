@@ -21,7 +21,7 @@ import Other from "../pages/other/other";
 import Forget from "../pages/auth/forget";
 import SignIn from "../pages/auth/signIn";
 import SignUp from "../pages/auth/signUp";
-import Background from "../components/Background";
+import Background from "../components/ui/Background";
 import ShopList from "../pages/shop/list";
 import Test from "../pages/test";
 

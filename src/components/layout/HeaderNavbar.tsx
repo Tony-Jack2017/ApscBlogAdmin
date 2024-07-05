@@ -1,12 +1,12 @@
 import {FC} from "react";
 import classNames from "classnames";
 import {Avatar, Divider, Menu} from "antd";
-import Dropdown from "../Dropdown";
+import Dropdown from "../ui/CumDropdown/CumDropdown";
 import {userMenu} from "../../common/menus";
 import {useNavigate} from "react-router-dom";
 import { MessageOutlined, AppstoreOutlined } from "@ant-design/icons"
 import AvatarImg from "../../resources/common/other/avatar.png"
-import Icon from "../Icon";
+import Icon from "../ui/Icon";
 
 
 interface HeaderNavbarItf {

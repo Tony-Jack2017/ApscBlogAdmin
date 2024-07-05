@@ -1,0 +1,29 @@
+.common-menu {
+  ul {
+    min-width: 240px;
+    li {
+      &:not(:first-child) {
+        margin-top: 20px;
+      }
+    }
+    .menu-item {
+      display: flex;
+      align-items: center;
+      position: relative;
+      font-size: 16px;
+      padding: 8px 24px 8px 24px;
+      font-weight: 500;
+      cursor: pointer;
+      .content {
+        flex: 1;
+      }
+      &:hover {
+        color: white;
+        border-radius: 100px;
+        //border-top-right-radius: 100px;
+        //border-bottom-right-radius: 100px;
+        background-color: rgba(22, 119, 255, 1);
+      }
+    }
+  }
+}

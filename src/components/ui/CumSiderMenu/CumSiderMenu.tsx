@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import {MenuItem} from "../common/menus";
+import {MenuItem} from "../../../common/menus";
 import {Menu} from "antd";
 import {useNavigate} from "react-router-dom";
 
@@ -7,7 +7,7 @@ interface SiderMenuItf {
     list: MenuItem[]
 }
 
-const SiderMenu:FC<SiderMenuItf> = (props) => {
+const CumSiderMenu:FC<SiderMenuItf> = (props) => {
     const { list } = props
     const navigate = useNavigate()
     const handleSelect = (data:any) => {
@@ -27,4 +27,4 @@ const SiderMenu:FC<SiderMenuItf> = (props) => {
     )
 }
 
-export default SiderMenu
+export default CumSiderMenu

@@ -8,6 +8,7 @@ import {
   useContext,
   useState
 } from "react";
+import "./index.scss"
 
 type FormInner = {
   state: any | undefined,
@@ -49,7 +50,7 @@ const useComForm = (): FormInner => {
   }
 }
 
-const ComForm: FC<ComFormItf> = (props) => {
+const CumForm: FC<ComFormItf> = (props) => {
   const { form, children} = props
   return (
     <FormContext.Provider value={form ? {
@@ -108,7 +109,7 @@ const ComInput = () => {
 
 
 export {
-  ComForm,
+  CumForm,
   ComFormItem,
   ComInput,
   useComForm

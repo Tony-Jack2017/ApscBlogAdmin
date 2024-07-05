@@ -35,9 +35,9 @@ const DefaultChildren = () => {
   )
 }
 
-const ComUploadFile: FC<UploadFileItf> = (props) => {
+const CumUpload: FC<UploadFileItf> = (props) => {
   const {
-    url, fileType, editable, autoUpload = true,
+    url, fileType, autoUpload = true,
     fileMultiple = false,
     customClass, style, children,
     onChange
@@ -119,4 +119,4 @@ const ComUploadFile: FC<UploadFileItf> = (props) => {
   )
 }
 
-export default ComUploadFile
+export default CumUpload

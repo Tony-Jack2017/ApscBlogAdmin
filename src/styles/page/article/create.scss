@@ -33,7 +33,7 @@
   margin: 0 auto;
   .create-way {
     min-width: 20%;
-    border-radius: 12px;
+    border-radius: 8px;
     border: 2px solid $borderColorDefault;
     padding: 12px;
     text-align: center;
@@ -54,7 +54,7 @@
       }
       .selected {
         display: flex;
-        align-items: start;
+        align-items: flex-start;
       }
     }
     .box-content {

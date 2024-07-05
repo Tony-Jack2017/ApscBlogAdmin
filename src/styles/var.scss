@@ -1,2 +1,11 @@
-$primaryColor: #1677ff;
+:root {
+  --base: #0000;
+  --primary-color: #1677ff;
+  --secondary-color: #034123;
+}
+
+
+
+$primaryColor: var(--primary-color);
+$secondaryColor: var(--secondary-color);
 $borderColorDefault: rgba(0, 0, 0, .4)

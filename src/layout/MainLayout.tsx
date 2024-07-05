@@ -3,7 +3,7 @@ import {Layout} from "antd";
 import classNames from "classnames";
 import {Outlet} from "react-router-dom";
 import LogoFullWhite from "../resources/common/logo/logo-full-white.png"
-import SiderMenu from "../components/SiderMenu";
+import CumSiderMenu from "../components/ui/CumSiderMenu/CumSiderMenu";
 import {siderMenu} from "../common/menus";
 import MainHeader from "./components/main/Header";
 const { Header, Content, Sider ,Footer} = Layout
@@ -31,7 +31,7 @@ const MainLayout:FC<MainLayoutItf> = (props) => {
                         <img src={LogoFullWhite} alt="logo" />
                     </div>
                     <div className="menu">
-                        <SiderMenu list={siderMenu} />
+                        <CumSiderMenu list={siderMenu} />
                     </div>
                     <div className="info">
                     </div>

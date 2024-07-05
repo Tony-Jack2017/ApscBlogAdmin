@@ -11,7 +11,6 @@ interface DataType {
     key: React.Key;
     article_id: number
     title: string
-    status: string
     readNum: number
     tags: string
     topic: string
@@ -22,7 +21,6 @@ const columns: TableColumnsType<DataType> = [
     { title: 'ArticleID', dataIndex: 'article_id' },
     { title: 'ArticleTitle', dataIndex: 'title' },
     { title: 'View Number', dataIndex: 'readNum' },
-    { title: 'Status', dataIndex: 'status'},
     { title: 'Tags', dataIndex: 'tags' },
     { title: 'Topic', dataIndex: 'tags' },
     { title: 'Created Time', dataIndex: 'created_at' },
@@ -44,7 +42,6 @@ for (let i = 0; i < 100; i++) {
         article_id: 1,
         title: `How to do yourself in the social`,
         readNum: 32,
-        status: `London, Park Lane no. ${i}`,
         tags: "Javascript",
         topic: "Web Front",
         created_at: "2024-06-10 12:58:63"

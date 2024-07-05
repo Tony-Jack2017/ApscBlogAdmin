@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import React, {CSSProperties, FC, Fragment, ReactNode, useLayoutEffect, useRef, useState} from "react";
 import ReactDOM from "react-dom";
+import "./index.scss"
 
 interface DropdownItf {
     children: ReactNode
@@ -21,7 +22,7 @@ const Portal:FC<PortalItf> = (props) => {
     </div>)
 }
 
-const Dropdown:FC<DropdownItf> = (props) => {
+const CumDropdown:FC<DropdownItf> = (props) => {
     const {
         children,
         content,
@@ -75,4 +76,4 @@ const Dropdown:FC<DropdownItf> = (props) => {
 }
 
 
-export default Dropdown
+export default CumDropdown
