@@ -1,5 +1,5 @@
 import React from "react";
-import { Input, Table, TableColumnsType} from "antd"
+import {Button, Input, Table, TableColumnsType} from "antd"
 import {
     ReadFilled, EyeFilled, MessageFilled, SearchOutlined
 } from "@ant-design/icons"
@@ -26,10 +26,12 @@ const columns: TableColumnsType<DataType> = [
     { title: 'Created Time', dataIndex: 'created_at' },
     {
         title: 'Action',
-        width: 150,
         render: () => {
             return(
-                <a href="/create">action</a>
+              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <Button type="primary">Edit</Button>
+                  <Button>Draft</Button>
+              </div>
             )
         }
     },

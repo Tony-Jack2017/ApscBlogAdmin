@@ -3,10 +3,10 @@ import {Outlet} from "react-router-dom";
 import {
   FileTextOutlined, ProductOutlined, PictureOutlined,
   PhoneOutlined, MailOutlined,
-  EditOutlined
+  EditOutlined, TwitterOutlined, YoutubeOutlined,
+  FacebookOutlined, LinkedinOutlined
 } from "@ant-design/icons";
-import {Avatar, Button, Divider} from "antd";
-import {MenuItemType} from "antd/es/menu/interface";
+import {Avatar, Button, Divider, Tag} from "antd";
 
 
 import "../../styles/page/profile.scss"
@@ -17,6 +17,7 @@ import AvatarImg from "../../resources/common/other/avatar.png"
 import Container from "../../layout/Container";
 import CoverBackground from "../../components/ui/CoverBackground";
 import ComMenu from "../../components/ui/CumMenu/CumMenu";
+import {CumMenuItemType} from "../../common/menus";
 
 
 const userInfo = [
@@ -24,12 +25,10 @@ const userInfo = [
   {title: "Project", num: 134, icon: <ProductOutlined/>},
   {title: "Photos", num: 134, icon: <PictureOutlined/>},
 ]
-const navMenu: MenuItemType[] = [
-  {label: "Timeline", key: "/profile/timeline"},
-  {label: "Edit Profile", key: "/profile/edit_profile"},
-  {label: "User Resume", key: "/profile/resume"},
-  {label: "Account", key: "/profile/account"},
-  {label: "About", key: "/profile/about"},
+const navMenu:CumMenuItemType[] = [
+  {label: "Timeline", key: "/profile/timeline", path: "/profile/timeline", active: false},
+  {label: "User Resume", key: "/profile/resume", path: "/profile/resume", active: false},
+  {label: "Account", key: "/profile/account", path: "/profile/account", active: false},
 ]
 
 const ProfileOverview = () => {
@@ -100,7 +99,30 @@ const ProfileOverview = () => {
                 </span>
               </div>
               <div className="item-content">
-                Hello World
+                <Tag icon={<TwitterOutlined />} color="#55acee">
+                  Twitter
+                </Tag>
+                <Tag icon={<YoutubeOutlined />} color="#cd201f">
+                  Youtube
+                </Tag>
+                <Tag icon={<FacebookOutlined />} color="#3b5999">
+                  Facebook
+                </Tag>
+                <Tag icon={<LinkedinOutlined />} color="#55acee">
+                  LinkedIn
+                </Tag>
+              </div>
+            </div>
+            <div className="info-item">
+              <div className="item-header">
+                <span className="title">
+                  Badge
+                </span>
+              </div>
+              <div className="item-content">
+                <Avatar size={120}>
+                  BADGE
+                </Avatar>
               </div>
             </div>
           </div>
@@ -108,6 +130,7 @@ const ProfileOverview = () => {
             <div>
               <ComMenu list={navMenu}/>
             </div>
+            <Divider style={{ borderBlockStart: "1px solid rgba(5, 5, 5, 0.2)" }} />
             <div>
               <Outlet/>
             </div>

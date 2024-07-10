@@ -137,23 +137,13 @@
   }
 }
 
-@media (min-width: 1512px) and (max-width: 1728px)  {
+@media (min-width: 1440px){
   .container {
-    max-width: 1150px;
+    max-width: 1440px;
   }
   .auth-layout {
     .layout-content {
       margin-top: 10vh;
     }
-  }
-}
-@media (min-width: 1728px) and (max-width: 1920px) {
-  .container {
-    max-width: 1400px;
-  }
-}
-@media (min-width: 1920px) {
-  .container {
-    max-width: 1600px;
   }
 }

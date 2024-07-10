@@ -113,6 +113,9 @@
         border-radius: 8px;
         overflow: hidden;
         box-shadow: 0 2px 6px rgba(33, 33, 33, .2);
+        &:not(:first-child) {
+          margin-top: 20px;
+        }
         &>div {
           padding: 12px;
         }
@@ -124,6 +127,7 @@
           }
         }
       }
+
     }
     .content-right {
       flex: 1;
@@ -134,7 +138,7 @@
 
 
 
-@media (min-width: 1200px) and (max-width: 1728px)  {
+@media (min-width: 1440px){
   .profile-header {
     height: 450px;
     .header-content-left {
@@ -165,60 +169,6 @@
   .profile-content {
     .content-left {
       width: calc(28% + 24px);
-    }
-  }
-}
-
-@media (min-width: 1728px) and (max-width: 1920px) {
-  .profile-header {
-    height: 400px;
-    .header-content-left {
-      width: 24%;
-      .userinfo {
-        &-content {
-          p {
-            margin-top: 24px;
-          }
-          .title {
-            margin-top: 24px;
-          }
-        }
-      }
-    }
-  }
-}
-
-@media (min-width: 1920px) {
-  .profile-header {
-    height: 520px;
-    .header-content-left {
-      width: 24%;
-      .userinfo {
-        &-content {
-          p {
-            margin-top: 24px;
-          }
-          .title {
-            margin-top: 24px;
-          }
-        }
-      }
-    }
-    .header-content-right {
-      .footer {
-        .footer-menu {
-          gap: 20px;
-          .item {
-            gap: 8px;
-            font-size: 18px;
-          }
-        }
-      }
-    }
-  }
-  .profile-content {
-    .content-left {
-      width: calc(24% + 24px);
     }
   }
 }

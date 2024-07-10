@@ -1,5 +1,5 @@
 import React from "react";
-import {Table, TableColumnsType} from "antd";
+import {Button, Table, TableColumnsType} from "antd";
 import "../../styles/page/article/draftbox.scss"
 
 
@@ -19,17 +19,18 @@ interface DataType {
 const columns: TableColumnsType<DataType> = [
     { title: 'ArticleID', dataIndex: 'article_id' },
     { title: 'ArticleTitle', dataIndex: 'title' },
-    { title: 'View Number', dataIndex: 'readNum' },
     { title: 'Status', dataIndex: 'status'},
     { title: 'Tags', dataIndex: 'tags' },
     { title: 'Topic', dataIndex: 'tags' },
     { title: 'Created Time', dataIndex: 'created_at' },
     {
         title: 'Action',
-        width: 150,
         render: () => {
             return(
-                <a href="/create">action</a>
+              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <Button type="primary">Publish</Button>
+                  <Button>Delete</Button>
+              </div>
             )
         }
     },

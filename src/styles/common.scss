@@ -7,9 +7,6 @@ $main: "main";
 $auth: "auth";
 
 
-
-
-
 // Base Layout Components
 .#{$main}-layout-sidebar {
   height: 100%;
@@ -82,4 +79,11 @@ $auth: "auth";
           0 2px 10px rgba(0, 0, 0, 0.03),
           0 4px 12px rgba(0, 0, 0, 0.01)
   ;
+}
+
+// common mixin
+@mixin flex-row-center-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

@@ -3,7 +3,6 @@ import {Button, Form, FormInstance, Input, message, Select, SelectProps} from "a
 import {CheckCircleOutlined, ArrowRightOutlined, ArrowLeftOutlined, SendOutlined} from "@ant-design/icons"
 import TextArea from "antd/es/input/TextArea";
 import "../../styles/page/article/create.scss"
-import "animate.css"
 import {UploadFileStatus} from "antd/lib/upload/interface";
 
 import {createArticle} from "../../api/http/article";
@@ -81,7 +80,7 @@ const ArticleContent = forwardRef<any, ArticleContentItf>((props, ref) => {
   switch (step + "-" + type) {
     case "2-file":
       return (
-        <div className="content-item file-content animate__animated animate__fadeInRight">
+        <div className="file-content">
           <CumUpload url="http://127.0.0.1:9527/api/v1/common/file/upload"
                      fileType="picture"
                      onChange={handleUpload}
@@ -90,14 +89,14 @@ const ArticleContent = forwardRef<any, ArticleContentItf>((props, ref) => {
       );
     case "2-write":
       return (
-        <div className="content-item write-content animate__animated animate__fadeInRight">
+        <div className="write-content">
           <TextEditor onChange={handleContent} initialValue={initWrite}/>
         </div>
       );
     case "3-write":
     case "3-file":
       return (
-        <div className="content-item article-form animate__animated animate__fadeInRight">
+        <div className="article-form">
           <Form form={form} layout="vertical" size="large">
             <Form.Item label="Title" name="title" rules={[{required: true, message: 'Please input the article title'}]}>
               <Input placeholder="Please input the article title"/>
@@ -127,7 +126,7 @@ const ArticleContent = forwardRef<any, ArticleContentItf>((props, ref) => {
       );
     default:
       return (
-        <div className="content-item chose-create-way animate__animated animate__fadeInRight">
+        <div className="chose-create-way">
           <div className={`create-way write-article ${type === "write" && "create-way_chosen"}`} onClick={() => {
             handleChose("write")
           }}>

@@ -3,6 +3,7 @@ import {message, Upload, Image, GetProp, UploadFile, UploadProps} from "antd";
 import { PlusOutlined } from "@ant-design/icons"
 import classNames from "classnames";
 import {UploadFileStatus} from "antd/lib/upload/interface";
+import "./index.scss"
 
 interface UploadFileItf {
   autoUpload?: boolean

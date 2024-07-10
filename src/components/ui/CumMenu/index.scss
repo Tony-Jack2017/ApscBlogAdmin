@@ -1,29 +1,91 @@
-.common-menu {
+.custom-menu {
+  --spanner-left: 0;
+  --spanner-width: 0;
+  --spanner-height: 0;
+}
+
+.custom-menu {
   ul {
-    min-width: 240px;
-    li {
-      &:not(:first-child) {
-        margin-top: 20px;
-      }
-    }
     .menu-item {
       display: flex;
       align-items: center;
       position: relative;
       font-size: 16px;
-      padding: 8px 24px 8px 24px;
-      font-weight: 500;
       cursor: pointer;
+      border-radius: 6px;
       .content {
-        flex: 1;
+         flex: 1;
       }
-      &:hover {
+    }
+    .spanner {
+      background-color: rgba(22, 119, 255, 1);
+      border-radius: var(--spanner-height);
+      height: var(--spanner-height);
+    }
+  }
+}
+
+
+/****   Menu Type  ****/
+
+.capsule-menu {
+  ul {
+    li {
+      padding: 8px 24px 8px 24px;
+    }
+    .menu-item {
+      &-inactive {
+        &:hover {
+          color: #2f3ab2;
+          //border-top-right-radius: 100px;
+          //border-bottom-right-radius: 100px;
+          background-color: #3b49df1a;
+        }
+      }
+      &-active {
         color: white;
-        border-radius: 100px;
-        //border-top-right-radius: 100px;
-        //border-bottom-right-radius: 100px;
-        background-color: rgba(22, 119, 255, 1);
+        background-color: #2f3ab2;
       }
+    }
+  }
+}
+.line-menu {
+  ul {
+    li {
+      &:hover {
+        color: rgba(22, 119, 255, .8);
+      }
+    }
+  }
+  .spanner {
+    position: absolute;
+  }
+}
+
+
+/****   Menu Direction  ****/
+
+.horizontal-menu {
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    li {
+      width: 160px;
+      display: flex;
+      align-items: center;
+    }
+    .spanner {
+    }
+  }
+}
+.vertical-menu {
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    .spanner {
     }
   }
 }
