@@ -35,7 +35,6 @@ const LayoutItem:FC<LayoutItemItf> = (props) => {
 }
 
 LayoutItem.propTypes = {
-
 }
 
 export {

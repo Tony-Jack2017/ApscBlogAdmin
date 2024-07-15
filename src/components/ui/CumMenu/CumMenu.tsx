@@ -5,6 +5,7 @@ import classNames from "classnames";
 import {ImmerReducer, useImmerReducer} from "use-immer";
 import {CumMenuItemType} from "../../../common/menus";
 import {useNavigate} from "react-router-dom";
+import {Console} from "inspector";
 
 export interface ComMenuItf {
   list: CumMenuItemType[]
@@ -56,6 +57,10 @@ const CumMenu: FC<ComMenuItf> = (props) => {
       }
     })
   }
+
+  console.log(menu.forEach(item => {
+    console.log(item)
+  }))
 
   return (
     <nav ref={customMenu} className={classes}>

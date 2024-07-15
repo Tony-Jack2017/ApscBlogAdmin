@@ -33,6 +33,8 @@ import ProfileAccount from "../pages/profile/account";
 import {ProfileResume, ResumeDetail} from "../pages/profile/resume";
 import SettingArticle from "../pages/setting/setting_article";
 import SettingCustom from "../pages/setting/setting_custom";
+import SettingProfile from "../pages/setting/setting_profile";
+import SettingAccount from "../pages/setting/setting_account";
 
 
 const router = createBrowserRouter([
@@ -79,7 +81,9 @@ const router = createBrowserRouter([
         path: "setting", element: <Setting />,
         children: [
           { path: "article", element: <SettingArticle /> },
-          { path: "custom", element: <SettingCustom /> }
+          { path: "custom", element: <SettingCustom /> },
+          { path: "profile", element: <SettingProfile /> },
+          { path: "account", element: <SettingAccount /> }
         ]
       }
     ],
