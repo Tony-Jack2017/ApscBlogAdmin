@@ -1,0 +1,12 @@
+.setting-profile {
+
+  .container {
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    &:not(:first-child) {
+      margin-top: 1.5rem;
+    }
+  }
+}

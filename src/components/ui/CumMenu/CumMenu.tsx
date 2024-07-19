@@ -1,25 +1,25 @@
-import {FC, useRef, useState} from "react";
+import {FC, Fragment, useRef, useState} from "react";
 
 import "./index.scss"
 import classNames from "classnames";
 import {ImmerReducer, useImmerReducer} from "use-immer";
 import {CumMenuItemType} from "../../../common/menus";
-import {useNavigate} from "react-router-dom";
-import {Console} from "inspector";
+import {NavLink, useNavigate} from "react-router-dom";
 
 export interface ComMenuItf {
   list: CumMenuItemType[]
   direction?: "vertical" | "horizontal"
   type?: "capsule" | "line"
   isLink?: boolean
-  onSelect?: (item:CumMenuItemType) => void
+  onSelect?: (item: CumMenuItemType) => void
 }
+
 type menuAction = {
   type: string
   payload: any
 }
 
-const listReducer:ImmerReducer<CumMenuItemType[], menuAction> = (daft,action) => {
+const listReducer: ImmerReducer<CumMenuItemType[], menuAction> = (daft, action) => {
   switch (action.type) {
     case "SELECT_ONE":
       daft[action.payload.activeIndex].active = true
@@ -46,10 +46,14 @@ const CumMenu: FC<ComMenuItf> = (props) => {
     `${type}-menu`
   )
 
-  const handleClick = (item:CumMenuItemType, index: number) => {
+  const handleClick = (item: CumMenuItemType, index: number) => {
     setSelect(index)
-    if (isLink) { navigate(item.path) }
-    if (onSelect) { onSelect(item) }
+    if (isLink) {
+      navigate(item.path)
+    }
+    if (onSelect) {
+      onSelect(item)
+    }
     dispatch({
       type: "SELECT_ONE",
       payload: {
@@ -58,20 +62,35 @@ const CumMenu: FC<ComMenuItf> = (props) => {
     })
   }
 
-  console.log(menu.forEach(item => {
-    console.log(item)
-  }))
-
   return (
     <nav ref={customMenu} className={classes}>
       <ul>
         {
           menu.map((item, index) => {
             return (
-              <li className={`menu-item ${select === index ? 'menu-item-active' : 'menu-item-inactive'}`} key={index} onClick={() => { handleClick(item, index) }}>
-                {item.icon && <div className="icon">{item.icon}</div>}
-                <div className="content">{item.label}</div>
-              </li>
+              <Fragment key={index}>
+                {
+                  isLink ?
+                    <NavLink to={item.path}>
+                      {({isActive, isPending, isTransitioning}) => (
+                        <li className={`menu-item ${isActive ? 'menu-item-active' : 'menu-item-inactive'}`}
+                            onClick={() => {
+                              handleClick(item, index)
+                            }}>
+                          {item.icon && <div className="icon">{item.icon}</div>}
+                          <div className="content">{item.label}</div>
+                        </li>
+                      )}
+                    </NavLink>
+                    :
+                    <li className={`menu-item ${select === index ? 'menu-item-active' : 'menu-item-inactive'}`} onClick={() => {
+                      handleClick(item, index)
+                    }}>
+                      {item.icon && <div className="icon">{item.icon}</div>}
+                      <div className="content">{item.label}</div>
+                    </li>
+                }
+              </Fragment>
             )
           })
         }

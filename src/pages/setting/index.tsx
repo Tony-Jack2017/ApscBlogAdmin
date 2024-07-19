@@ -1,5 +1,5 @@
 import "../../styles/page/setting.scss"
-import {Outlet} from "react-router-dom";
+import {Outlet, useNavigate} from "react-router-dom";
 import {Col, Row} from "antd";
 import { ProfileOutlined,SolutionOutlined,FileDoneOutlined,AlertOutlined } from "@ant-design/icons"
 
@@ -9,6 +9,7 @@ import {CumMenuItemType} from "../../common/menus";
 
 import CumMenu from "../../components/ui/CumMenu/CumMenu";
 import Container from "../../layout/Container";
+import {useEffect} from "react";
 
 const menuList:CumMenuItemType[] = [
   {icon: <ProfileOutlined />, label: "Profile", key: "/setting/profile", path: "/setting/profile", active: false},
@@ -18,16 +19,22 @@ const menuList:CumMenuItemType[] = [
 ]
 
 const Setting = () => {
+  const navigator = useNavigate()
+
+  useEffect(() => {
+    navigator("/setting/profile")
+  }, [navigator])
+
   return (
     <div className="setting-page">
-      <Container isNoStyle={true}>
+      <Container isContent={true} isNoStyle={true}>
         <Row gutter={32}>
-          <Col span={4} className="layout-left">
+          <Col span={6} className="layout-left">
             <div>
-              <CumMenu direction="vertical" list={menuList} />
+              <CumMenu isLink={true} direction="vertical" list={menuList} />
             </div>
           </Col>
-          <Col span={20} className="layout-right">
+          <Col span={18} className="layout-right">
             <Outlet />
           </Col>
         </Row>

@@ -1,5 +1,5 @@
-import React, {Fragment} from "react";
-import {Outlet} from "react-router-dom";
+import React, {Fragment, useEffect} from "react";
+import {Outlet, useNavigate} from "react-router-dom";
 import {
   FileTextOutlined, ProductOutlined, PictureOutlined,
   PhoneOutlined, MailOutlined,
@@ -32,6 +32,11 @@ const navMenu:CumMenuItemType[] = [
 ]
 
 const ProfileOverview = () => {
+  const navigator = useNavigate()
+  useEffect(() => {
+    navigator("/profile/timeline")
+  }, [navigator])
+
   return (
     <div className="profile-page">
       <section className="section section-1">

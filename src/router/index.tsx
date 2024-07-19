@@ -80,6 +80,7 @@ const router = createBrowserRouter([
       {
         path: "setting", element: <Setting />,
         children: [
+          { index: true, element: <SettingAccount /> },
           { path: "article", element: <SettingArticle /> },
           { path: "custom", element: <SettingCustom /> },
           { path: "profile", element: <SettingProfile /> },

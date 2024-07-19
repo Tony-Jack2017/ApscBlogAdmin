@@ -11,12 +11,11 @@ function App() {
   return (
     <ConfigProvider
       theme={{
-          components: {
-            Button: {
-              colorPrimary: '#2f3ab2',
-              algorithm: true, // 启用算法
-            }
-          }
+        token: {
+          // Seed Token，影响范围大
+          colorPrimary: '#2f3ab2',
+          borderRadius: 4,
+        },
       }}
     >
     <div className="App">

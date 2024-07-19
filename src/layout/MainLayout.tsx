@@ -44,7 +44,7 @@ const MainLayout:FC<MainLayoutItf> = (props) => {
                         <MainHeader />
                     </Header>
                     <Content style={{
-                        flex: "none", backgroundColor: "#f6f6f6",
+                        flex: "none", backgroundColor: "#f5f7f9",
                         marginTop: "72px", paddingBottom: "80px"
                     }}
                       className="main-layout-content">

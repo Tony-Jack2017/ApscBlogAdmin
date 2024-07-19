@@ -1,11 +1,81 @@
 :root {
   --base: #0000;
+  --refer-base: #ffffff;
+
   --primary-color: #2f3ab2;
   --secondary-color: #034123;
+  --secondary-color_1: #ffaffa;
+  --secondary-color_2: #ffaffa;
+  --success-color: #fffff;
+  --failed-color: #ffffff;
+  --error-color: #fafaff;
+  --warning-color: #aeaefe;
+  --normal-color: #ee0232;
+
+  --border-radius: 6px;
+  --border-color-default: rgba(0, 0, 0, .4);
+  --border-color-hover: rgba(0, 0, 0, .4);
+  --border-color-active: rgba(0, 0, 0, .4);
+
+  --fontsize_1: 35px;
+  --fontsize_2: 32px;
+  --fontsize_3: 28px;
+  --fontsize_4: 24px;
+  --fontsize_5: 20px;
+  --fontsize_6: 18px;
+  --fontsize_7: 12px;
+
+  --gutter_1: 36px;
+  --gutter_2: 28px;
+  --gutter_3: 20px;
+  --gutter_4: 12px;
+
+  --pad-mar_1: 24px;
+  --pad-mar_2: 20px;
+  --pad-mar_3: 16px;
+  --pad-mar_4: 12px;
+  --pad-mar_5: 8px;
+  --pad-mar_6: 4px;
+  --pad-mar_auto: auto;
+
 }
 
 
+$base: var(--base);
+$referBase: var(--refer-base);
 
 $primaryColor: var(--primary-color);
 $secondaryColor: var(--secondary-color);
-$borderColorDefault: rgba(0, 0, 0, .4)
+$secondaryColor1: var(--secondary-color_1);
+$secondaryColor2: var(--secondary-color_2);
+$successColor: var(--success-color);
+$failedColor: var(--failed-color);
+$errorColor: var(--error-color);
+$warningColor: var(--warning-color);
+$normalColor: var(--normal-color);
+
+$borderRadius: var(--border-radius);
+$borderColorDefault: var(--border-color-default);
+$borderColorHover: var(--border-color-hover);
+$borderColorActive: var(--border-color-active);
+
+$fontsize1: var(--fontsize_1);
+$fontsize2: var(--fontsize_2);
+$fontsize3: var(--fontsize_3);
+$fontsize4: var(--fontsize_4);
+$fontsize5: var(--fontsize_5);
+$fontsize6: var(--fontsize_6);
+$fontsize7: var(--fontsize_7);
+
+$gutter1: var(--gutter_1);
+$gutter2: var(--gutter_2);
+$gutter3: var(--gutter_3);
+$gutter4: var(--gutter_4);
+
+$padMar1: var(--pad-mar_1);
+$padMar2: var(--pad-mar_2);
+$padMar3: var(--pad-mar_3);
+$padMar4: var(--pad-mar_4);
+$padMar5: var(--pad-mar_5);
+$padMar6: var(--pad-mar_6);
+$padMarAuto: var(--pad-mar_auto);
